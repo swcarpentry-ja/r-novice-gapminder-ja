@@ -1189,7 +1189,7 @@ str(cats[1,])
 
 
 ~~~
-'data.frame':	1 obs. of  3 variables:
+'data.frame':\t1 obs. of  3 variables:
  $ coat        : Factor w/ 3 levels "black","calico",..: 2
  $ weight      : num 2.1
  $ likes_string: logi TRUE

@@ -3,7 +3,7 @@ layout: lesson
 root: .
 ---
 
-Introduction to R for non-programmers using gapminder data.
+gapminderデータを使用する非プログラマのためのR入門。
 
 The goal of this lesson is to teach novice programmers to write modular code
 and best practices for using R for data analysis. R is commonly used in many
@@ -14,20 +14,21 @@ attendees a strong foundation in the fundamentals of R, and to teach best
 practices for scientific computing: breaking down analyses into modular units,
 task automation, and encapsulation.
 
-Note that this workshop will focus on teaching the fundamentals of the
-programming language R, and will not teach statistical analysis.
+このワークショップでは、プログラミング言語Rの基礎を教えることに焦点を当て、
+統計分析を教えることはないことに注意してください。
 
-The lesson contains more material than can be taught in a day.  The [instructor notes page]({{ page.root }}/guide) has some suggested lesson plans suitable for a one or half day workshop.
+レッスンには、1日に教えることができる以上の素材が含まれています。
+[講師ノートのページ]({{ page.root }}/guide)には、
+1日または1日半のワークショップに適したレッスンプランがいくつかあります。
 
-A variety of third party packages are used throughout this workshop. These
-are not necessarily the best, nor are they comprehensive, but they are
-packages we find useful, and have been chosen primarily for their
-usability.
+このワークショップでは、さまざまなサードパーティパッケージが使用されています。
+これらは必ずしも最高のものではなく、包括的でもありませんが、有用であり、
+使いやすさのために主に選ばれたパッケージです。
 
 > ## Prerequisites
 >
-> Understand that computers store data and instructions (programs, scripts etc.) in files.
-> Files are organised in directories (folders).
-> Know how to access files not in the working directory by specifying the path.
+> コンピュータがデータと命令（プログラムやスクリプト）をファイルに保存することを理解する。
+> ファイルはディレクトリ（フォルダ）に編成されています。
+> パスを指定することによって、作業ディレクトリにないファイルにアクセスする方法を理解してください。
 {: .prereq}
 

@@ -207,7 +207,7 @@ str(cats)
 
 
 ~~~
-'data.frame':	5 obs. of  4 variables:
+'data.frame':\t5 obs. of  4 variables:
  $ coat        : Factor w/ 4 levels "black","calico",..: 2 1 3 NA 4
  $ weight      : num  2.1 5 3.2 3.3 3.3
  $ likes_string: int  1 0 1 1 1
@@ -226,7 +226,7 @@ str(cats)
 
 
 ~~~
-'data.frame':	5 obs. of  4 variables:
+'data.frame':\t5 obs. of  4 variables:
  $ coat        : chr  "calico" "black" "tabby" NA ...
  $ weight      : num  2.1 5 3.2 3.3 3.3
  $ likes_string: int  1 0 1 1 1
@@ -499,7 +499,7 @@ str(gapminder)
 
 
 ~~~
-'data.frame':	1704 obs. of  6 variables:
+'data.frame':\t1704 obs. of  6 variables:
  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
  $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...

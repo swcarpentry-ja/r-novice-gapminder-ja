@@ -193,7 +193,7 @@ str(gapminder)
 
 
 ~~~
-'data.frame':	1704 obs. of  6 variables:
+'data.frame':\t1704 obs. of  6 variables:
  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
  $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
@@ -213,7 +213,7 @@ str(gapminder %>% group_by(continent))
 
 
 ~~~
-Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variables:
+Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':\t1704 obs. of  6 variables:
  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
  $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
@@ -230,7 +230,7 @@ Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variable
   ..$ : int  60 61 62 63 64 65 66 67 68 69 ...
  - attr(*, "group_sizes")= int  624 300 396 360 24
  - attr(*, "biggest_group_size")= int 624
- - attr(*, "labels")='data.frame':	5 obs. of  1 variable:
+ - attr(*, "labels")='data.frame':\t5 obs. of  1 variable:
   ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 1 2 3 4 5
   ..- attr(*, "vars")= chr "continent"
   ..- attr(*, "drop")= logi TRUE
@@ -559,11 +559,11 @@ combine the first two steps:
 ~~~
 gapminder %>%
     # Filter countries that start with "A" or "Z"
-	filter(substr(country, start = 1, stop = 1) %in% c("A", "Z")) %>%
-	# Make the plot
-	ggplot(aes(x = year, y = lifeExp, color = continent)) +
-	geom_line() +
-	facet_wrap( ~ country)
+\tfilter(substr(country, start = 1, stop = 1) %in% c("A", "Z")) %>%
+\t# Make the plot
+\tggplot(aes(x = year, y = lifeExp, color = continent)) +
+\tgeom_line() +
+\tfacet_wrap( ~ country)
 ~~~
 {: .language-r}
 

@@ -1,7 +1,7 @@
 [![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/) 
  [![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--r--gapminder-E01563.svg)](https://swcarpentry.slack.com/messages/C9Y0M3YKG) 
 
-R for Reproducible Scientific Analysis
+再現可能な科学的分析のためのR
 ======================================
 
 An introduction to R for non-programmers using the [Gapminder][gapminder] data.
@@ -22,18 +22,19 @@ task automation, and encapsulation.
 Note that this workshop focuses on the fundamentals of the programming
 language R, and not on statistical analysis.
 
-The lesson contains more material than can be taught in a day.  The [instructor notes page]({{ page.root }}/guide) has some suggested lesson plans suitable for a one or half day workshop.
+レッスンには、1日に教えることができる以上の素材が含まれています。
+[講師ノートのページ]({{ page.root }}/guide)には、
+1日または1日半のワークショップに適したレッスンプランがいくつかあります。
 
-A variety of third party packages are used throughout this workshop. These
-are not necessarily the best, nor are they comprehensive, but they are 
-packages we find useful, and have been chosen primarily for their 
-usability.
+このワークショップでは、さまざまなサードパーティパッケージが使用されています。
+これらは必ずしも最高のものではなく、包括的でもありませんが、有用であり、
+使いやすさのために主に選ばれたパッケージです。
 
 Maintainers:
 
-* [David Mawdsley][mawdsley_david]
-* [Jeff Oliver][oliver_jeffrey]
-* [Tom Wright][wright_tom]
+* [Full Name][GitHubUser]
+* [Full Name][GitHubUser]
+* [Full Name][GitHubUser]
 * [Naupaka Zimmerman][zimmerman_naupaka]
 
 [gapminder]: http://www.gapminder.org/
