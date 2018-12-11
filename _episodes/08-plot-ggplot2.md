@@ -96,7 +96,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Modify the example so that the figure shows how life expectancy has
 > changed over time:
@@ -208,7 +208,7 @@ lines.
 > So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
 {: .callout}
 
-> ## Challenge 3
+> ## チャレンジ３
 >
 > Switch the order of the point and line layers from the previous example. What
 > happened?
@@ -460,7 +460,7 @@ code to modify!
 [ggplot-doc]: http://docs.ggplot2.org/current/
 
 
-> ## Challenge 5
+> ## チャレンジ５
 >
 > Create a density plot of GDP per capita, filled by continent.
 >

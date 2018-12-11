@@ -3,7 +3,7 @@ layout: lesson
 root: .
 ---
 
-gapminderデータを使用する非プログラマのためのR入門。
+ブログラマーでない人のためのgapminderデータ用いたR入門。
 
 The goal of this lesson is to teach novice programmers to write modular code
 and best practices for using R for data analysis. R is commonly used in many

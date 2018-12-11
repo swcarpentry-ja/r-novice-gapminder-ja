@@ -793,7 +793,7 @@ names(my_example)
 ~~~
 {: .output}
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Start by making a vector with the numbers 1 through 26.
 > Multiply the vector by 2, and give the resulting vector
@@ -957,7 +957,7 @@ typeof(CATegories)
 ~~~
 {: .output}
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 > Is there a factor in our `cats` data.frame? what is its name?
 > Try using `?read.csv` to figure out how to keep text columns as character
@@ -1196,7 +1196,7 @@ str(cats[1,])
 ~~~
 {: .output}
 
-> ## Challenge 3
+> ## チャレンジ３
 >
 > There are several subtly different ways to call variables, observations and
 > elements from data.frames:
@@ -1437,7 +1437,7 @@ ncol(matrix_example)
 ~~~
 {: .output}
 
-> ## Challenge 4
+> ## チャレンジ４
 >
 > What do you think will be the result of
 > `length(matrix_example)`?
@@ -1469,7 +1469,7 @@ ncol(matrix_example)
 {: .challenge}
 
 
-> ## Challenge 5
+> ## チャレンジ５
 >
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.

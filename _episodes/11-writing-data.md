@@ -58,7 +58,7 @@ dev.off()
 
 Open up this document and have a look.
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Rewrite your 'pdf' command to print a second
 > page in the pdf, showing a facet plot (hint: use `facet_grid`)
@@ -186,7 +186,7 @@ Australia,1992,17481977,Oceania,77.56,23424.76683
 
 That looks better!
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 > Write a data-cleaning script file that subsets the gapminder
 > data to include only data points collected since 1990.

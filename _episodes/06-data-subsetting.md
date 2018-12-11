@@ -300,7 +300,7 @@ x
 ~~~
 {: .output}
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Given the following code:
 >
@@ -485,7 +485,7 @@ x[names(x) == "a"]
 > vector are `TRUE`).
 {: .callout}
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 > Given the following code:
 >
@@ -720,7 +720,7 @@ x[! names(x) %in% c("a","c") ]
 ~~~
 {: .output}
 
-> ## Challenge 3
+> ## チャレンジ３
 >
 > Selecting elements of a vector that match any of a list of components
 > is a very common data analysis task. For example, the gapminder data set
@@ -1009,7 +1009,7 @@ matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
-> ## Challenge 4
+> ## チャレンジ４
 >
 > Given the following code:
 >
@@ -1179,7 +1179,7 @@ xlist$data
 ~~~
 {: .output}
 
-> ## Challenge 5
+> ## チャレンジ５
 > Given the following list:
 >
 > 

@@ -144,7 +144,7 @@ x
 ~~~
 {: .output}
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Use an `if()` statement to print a suitable message
 > reporting whether there are any records from 2002 in
@@ -409,7 +409,7 @@ output_vector2
 {: .callout}
 
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 > Compare the objects output_vector and
 > output_vector2. Are they the same? If not, why not?
@@ -467,7 +467,7 @@ output_vector2
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 3
+> ## チャレンジ３
 >
 > Write a script that loops through the `gapminder` data by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
@@ -526,7 +526,7 @@ output_vector2
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 4
+> ## チャレンジ４
 >
 > Modify the script from Challenge 3 to loop over each
 > country. This time print out whether the life expectancy is

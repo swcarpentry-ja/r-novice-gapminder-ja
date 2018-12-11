@@ -234,7 +234,7 @@ str(cats)
 ~~~
 {: .output}
 
-> ## Challenge 1
+> ## チャレンジ１
 > Let's imagine that 1 human year is equivalent to 7 cat years. 
 > 1. Create a vector called `human_age` by multiplying `cats$age` by 7.
 > 2. Convert `human_age` to a factor.
@@ -417,7 +417,7 @@ cats
 ~~~
 {: .output}
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 > You can create a new data frame right from within R with the following syntax:
 > 
@@ -676,7 +676,7 @@ head(gapminder)
 ~~~
 {: .output}
 
-> ## Challenge 3
+> ## チャレンジ３
 >
 > It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
 >
@@ -706,7 +706,7 @@ head(gapminder)
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-> ## Challenge 4
+> ## チャレンジ４
 >
 > Go to file -> new file -> R script, and write an R script
 > to load in the gapminder dataset. Put it in the `scripts/`
@@ -732,7 +732,7 @@ into a script file so we can come back to it later.
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 5
+> ## チャレンジ５
 >
 > Read the output of `str(gapminder)` again;
 > this time, use what you've learned about factors, lists and vectors,

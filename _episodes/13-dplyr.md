@@ -151,7 +151,7 @@ year_country_gdp_euro <- gapminder %>%
 ~~~
 {: .language-r}
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Write a single command (which can span multiple lines and includes pipes) that
 > will produce a dataframe that has the African values for `lifeExp`, `country`
@@ -278,7 +278,7 @@ continent mean_gdpPercap
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 >
 > Calculate the average life expectancy per country. Which has the longest average life

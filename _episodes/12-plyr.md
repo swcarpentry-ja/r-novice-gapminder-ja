@@ -198,7 +198,7 @@ returns another `data.frame` (2nd letter is a **d**) i
   function: we haven't defined it elsewhere, and it has no name. It only exists
   in the scope of our call to `ddply`.
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Calculate the average life expectancy per continent. Which has the longest?
 > Which had the shortest?
@@ -403,7 +403,7 @@ d_ply(
 {: .callout}
 
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 > Calculate the average life expectancy per continent and year. Which had the
 > longest and shortest in 2007? Which had the greatest change in between 1952

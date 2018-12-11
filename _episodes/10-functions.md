@@ -129,7 +129,7 @@ fahr_to_kelvin(212)
 ~~~
 {: .output}
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Write a function called `kelvin_to_celsius()` that takes a temperature in
 > Kelvin and returns that temperature in Celsius.
@@ -174,7 +174,7 @@ kelvin_to_celsius <- function(temp) {
 ~~~
 {: .language-r}
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 > Define the function to convert directly from Fahrenheit to Celsius,
 > by reusing the two functions above (or using your own functions if you
@@ -299,7 +299,7 @@ Error in fahr_to_kelvin(temp = as.factor(32)): is.numeric(temp) is not TRUE
 ~~~
 {: .error}
 
-> ## Challenge 3
+> ## チャレンジ３
 >
 > Use defensive programming to ensure that our `fahr_to_celsius()` function
 > throws an error immediately if the argument `temp` is specified
@@ -551,7 +551,7 @@ with that column added. This means when we call the function later we can see
 the context for the returned GDP values, which is much better than in our first 
 attempt where we got a vector of numbers.
 
-> ## Challenge 4
+> ## チャレンジ４
 >
 > Test out your GDP function by calculating the GDP for New Zealand in 1987. How
 > does this differ from New Zealand's GDP in 1952?
@@ -570,7 +570,7 @@ attempt where we got a vector of numbers.
 {: .challenge}
 
 
-> ## Challenge 5
+> ## チャレンジ５
 >
 > The `paste()` function can be used to combine text together, e.g:
 >

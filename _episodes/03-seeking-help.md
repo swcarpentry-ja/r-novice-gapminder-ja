@@ -144,7 +144,7 @@ Will print out your current version of R, as well as any packages you
 have loaded. This can be useful for others to help reproduce and debug
 your issue.
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Look at the help for the `c` function. What kind of vector do you
 > expect you will create if you evaluate the following:
@@ -164,7 +164,7 @@ your issue.
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 > Look at the help for the `paste` function. You'll need to use this later.
 > What is the difference between the `sep` and `collapse` arguments?
@@ -246,7 +246,7 @@ your issue.
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 3
+> ## チャレンジ３
 > Use help to find a function (and its associated parameters) that you could
 > use to load data from a csv file in which columns are delimited with "\t"
 > (tab) and the decimal point is a "." (period). This check for decimal

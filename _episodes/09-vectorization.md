@@ -66,7 +66,7 @@ y:  6  7  8  9
 {: .language-r}
 
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Let's try this on the `pop` column of the `gapminder` dataset.
 >
@@ -107,7 +107,7 @@ y:  6  7  8  9
 {: .challenge}
 
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 > On a single graph, plot population, in
 > millions, against year, for all countries. Don't worry about
@@ -260,7 +260,7 @@ m * -1
 {: .callout}
 
 
-> ## Challenge 3
+> ## チャレンジ３
 >
 > Given the following matrix:
 >
@@ -351,7 +351,7 @@ m * -1
 {: .challenge}
 
 
-> ## Challenge 4
+> ## チャレンジ４
 >
 > We're interested in looking at the sum of the
 > following sequence of fractions:

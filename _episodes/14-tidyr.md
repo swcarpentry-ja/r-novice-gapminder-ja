@@ -85,7 +85,7 @@ str(gapminder)
 ~~~
 {: .output}
 
-> ## Challenge 1
+> ## チャレンジ１
 >
 > Is gapminder a purely long, purely wide, or some intermediate format?
 >
@@ -260,7 +260,7 @@ gap_long$year <- as.integer(gap_long$year)
 {: .language-r}
 
 
-> ## Challenge 2
+> ## チャレンジ２
 >
 > Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent.
 >**Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson
@@ -548,7 +548,7 @@ str(gap_wide_new)
 ~~~
 {: .output}
 
-> ## Challenge 3
+> ## チャレンジ３
 >
 > Take this 1 step further and create a `gap_ludicrously_wide` format data by spreading over countries, year and the 3 metrics?
 >**Hint** this new dataframe should only have 5 rows.

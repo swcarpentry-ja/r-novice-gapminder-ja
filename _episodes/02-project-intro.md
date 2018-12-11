@@ -143,7 +143,7 @@ one to store the analysis scripts.
 
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
 
-> ## Challenge 1
+> ## チャレンジ１
 > Download the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv).
 >
 > 1. Download the file (CTRL + S, right mouse click -> "Save as", or File -> "Save page as")
@@ -153,7 +153,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > We will load and inspect these data later.
 {: .challenge}
 
-> ## Challenge 2
+> ## チャレンジ２
 > It is useful to get some general idea about the dataset, directly from the
 > command line, before loading it into R. Understanding the dataset better
 > will come in handy when making decisions on how to load it in R. Use the command-line
