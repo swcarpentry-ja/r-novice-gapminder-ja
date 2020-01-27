@@ -184,13 +184,13 @@ behaviour of R).
    - order of layers matters!
    - `ggsave` to save a figure.
 
-## [Vectorization]({{ page.root }}/09-vectorization/)
+## [ベクトル化]({{ page.root }}/09-vectorization/)
 
-- Most functions and operations apply to each element of a vector
-- `*` applies element-wise to matrices
-- `%*%` for true matrix multiplication
-- `any()` will return `TRUE` if any element of a vector is `TRUE`
-- `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
+- ほとんどの関数や演算はベクトルの要素ごとに実行されます。
+- `*` は行列に対して要素ごとに実行されます。
+- 本来の行列の積を求めるには `%*%` を使います。
+- `any()` はベクトルの要素の中に一つでも `TRUE` があれば `TRUE` を返します。
+- `all()` はベクトルの要素が*全て* `TRUE` であれば `TRUE` を返します。
 
 ## [Functions explained]({{ page.root }}/10-functions/)
 

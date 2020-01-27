@@ -27,16 +27,15 @@ source: Rmd
 
 
 
-At this point, you've seen it all: in the last lesson, we toured all the basic
-data types and data structures in R. Everything you do will be a manipulation of
-those tools. But most of the time, the star of the show is the data frame—the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things
-about working with data frames.
+これでRの基礎を全て見たことになります。このレッスンで、Rの基本的なデータ型、データ構造を習いました。
+これからすることの全ては、これらの道具を用いた操作となります。
+しかし大抵の場合、主演はデータフレーム（CSVファイルから情報を読み込み作成した表）です。
+このレッスンでは、データフレームを使ってどう作業していくかについて更に学んでいきましょう。
 
-## Adding columns and rows in data frames
+## データフレームに行と列を追加する
 
-We already learned that the columns of a data frame are vectors, so that our
-data are consistent in type throughout the columns. As such, if we want to add a
-new column, we can start by making a new vector:
+既に学んだとおり、データフレームの列はベクトルですから、列にあるデータには一貫性があります。
+ですので、新しい列を加えたい場合は、新しいベクトルを作ることから始めることになります：
 
 
 
@@ -57,7 +56,7 @@ cats
 ~~~
 {: .output}
 
-We can then add this as a column via:
+そして、これを以下を使って列に加えます：
 
 
 ~~~
@@ -75,7 +74,7 @@ cbind(cats, age)
 ~~~
 {: .output}
 
-Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the dataframe, it would fail:
+もし、データフレームの行の数と一致しない年齢のベクトルを追加しようとすると、失敗します：
 
 
 ~~~
@@ -106,8 +105,7 @@ Error in data.frame(..., check.names = FALSE): arguments imply differing number 
 ~~~
 {: .error}
 
-Why didn't this work? Of course, R wants to see one element in our new column
-for every row in the table:
+なぜダメだったのでしょうか？もちろん、Rは新しい列のひとつの要素を、表の中にある全ての行について参照したがるものです。
 
 
 ~~~
@@ -136,7 +134,7 @@ length(age)
 ~~~
 {: .output}
 
-So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwite the content of cats with our new data frame.
+ですから、そうするために、 `nrow(cats)` = `length(age)` である必要があるのです。猫の内容を新しいデータフレームで上書きしましょう。
 
 
 ~~~
@@ -145,8 +143,7 @@ cats <- cbind(cats, age)
 ~~~
 {: .language-r}
 
-Now how about adding rows? We already know that the rows of a
-data frame are lists:
+新しい行を加えてみてはどうでしょうか？既に知っているとおり、データフレームの行はリストです：
 
 
 ~~~
@@ -163,15 +160,14 @@ factor level, NA generated
 ~~~
 {: .error}
 
-## Factors
+## 順序なし因数
 
-Here is another thing to look out for: in a `factor`, each different value represents what is called a `level`. In our case, the `factor` "coat" has 3 levels: "black", "calico", and "tabby". R will only accept values that match one of the levels. If you add a new value, it will become `NA`.
+ここで、もうひとつ気を付けなければいけないことは、`順序なし因子型（factor）`の中で、それぞれの値に`水準（level）` と呼ばれるものが付されているということです。つまり、この例では、`順序なし因子型`である「coat（毛皮）」には、「black（黒）」、「calico（三毛）」、「tabby（ぶち）」の３つの水準（level） があり、Rは、この水準のいずれかに一致する値でなければ、受け付けないというわけです。新しい値を加えようとすると、それは`NA`になります。
 
-The warning is telling us that we unsuccessfully added "tortoiseshell" to our
-*coat* factor, but 3.3 (a numeric), TRUE (a logical), and 9 (a numeric) were
-successfully added to *weight*, *likes_string*, and *age*, respectively, since
-those variables are not factors. To successfully add a cat with a
-"tortoiseshell" *coat*, add "tortoiseshell" as a *level* of the factor:
+この注意は、順序なし因子型である「coat（毛皮）」に、「tortoiseshell（錆）」をちゃんと加えられなかった
+ことを伝えているのです。しかし、3.3 （数値型）、TRUE（論理型）、9（数値型）については、
+順序なし因子型ではないため、*weight*、*likes_string*、*age*にそれぞれ正しく加えられています。
+「tortoiseshell」の猫について、*coat*をちゃんと加えるために、「tortoiseshell」をこの順序なし因子の*水準（level）*に加えましょう：
 
 
 ~~~
@@ -194,9 +190,9 @@ cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
 ~~~
 {: .language-r}
 
-Alternatively, we can change a factor into a character vector; we lose the
-handy categories of the factor, but we can subsequently add any word we want to the
-column without babysitting the factor levels:
+あるいは、順序なし因子型を文字型のベクトルに変えることもできます。
+すると、順序なし因子型の便利な分類を失いますが、順序なし因子の水準を
+管理する必要なく、列に好きな語句を追加できます：
 
 
 ~~~
@@ -235,23 +231,22 @@ str(cats)
 {: .output}
 
 > ## チャレンジ１
-> Let's imagine that 1 human year is equivalent to 7 cat years. 
-> 1. Create a vector called `human_age` by multiplying `cats$age` by 7.
-> 2. Convert `human_age` to a factor.
-> 3. Convert `human_age` back to a numeric vector using the `as.numeric()` function. Now divide it by 7 to get the original ages back. Explain what happened.
+> 人の１年は、猫の７年と同じだと想像してみましょう。
+> 1. `cats$age`を７倍にした、`human_age（人の年齢）`というベクトルを作りましょう
+> 2. `human_age`を順序なし因子型に変換しましょう
+> 3. `human_age` を、`as.numeric()` 関数を用いて、数値型に戻しましょう。そして、もともとの年に戻すために７で割りましょう。何が起こったか説明して下さい。
 >
-> > ## Solution to Challenge 1
+> > ## チャレンジ１の解答
 > > 1. `human_age <- cats$age * 7`
-> > 2. `human_age <- factor(human_age)`. `as.factor(human_age)` works just as well.
-> > 3. `as.numeric(human_age)` yields `1 2 3 4 4` because factors are stored as integers (here, 1:4), each of which is associated with a label (here, 28, 35, 56, and 63). Converting the factor to a numeric vector gives us the underlying integers, not the labels. If we want the original numbers, we need to convert `human_age` to a character vector and then to a numeric vector (why does this work?). This comes up in real life when we accidentally include a character somewhere in a column of a .csv file supposed to only contain numbers, and forget to set `stringsAsFactors=FALSE` when we read in the data.
+> > 2. `human_age <- factor(human_age)`. `as.factor(human_age)` でもうまくいきます
+> > 3. `as.numeric(human_age)` からは、`1 2 3 4 4` が返ってきます。なぜなら、順序なし文字型は、それぞれが、ラベル（ここでは、28、35、56、63）に紐づけられた整数型（ここでは、1:4）として蓄積されているからです。順序なし文字型を数値型に変換する際は、ラベルの値ではなく、裏にある整数に変換されるのです。もとの数が欲しい場合は、`human_age`を文字ベクトルにしてから、数値ベクトルにする必要があります（なぜこれでうまくいくのでしょう？）。この問題は、csvファイルの中で数だけを持つはずの列のどこかにうっかり文字を入れてしまい、データを読み込むとき`stringsAsFactors=FALSE`を設定し忘れてしまったときなどに起こります。
 > {: .solution}
 {: .challenge}
 
-## Removing rows
+## 行の削除
 
-We now know how to add rows and columns to our data frame in R—but in our
-first attempt to add a "tortoiseshell" cat to the data frame we have accidentally
-added a garbage row:
+Rのデータフレームに行列を加える方法は分かりましたが、猫データフレームに"tortoiseshell"を加える最初の試みで、
+うっかり不要な行を加えてしまいました。
 
 
 ~~~
@@ -271,7 +266,7 @@ cats
 ~~~
 {: .output}
 
-We can ask for a data frame minus this offending row:
+この問題の行を除くようにデータフレームに頼みましょう：
 
 
 ~~~
@@ -290,12 +285,11 @@ cats[-4, ]
 ~~~
 {: .output}
 
-Notice the comma with nothing after it to indicate that we want to drop the entire fourth row.
+コンマの後に何もないのは、４番目の行の全部を削除して欲しいということを示している点に留意しましょう。
 
-Note: we could also remove both new rows at once by putting the row numbers
-inside of a vector: `cats[c(-4,-5), ]`
+注意：ベクトルの中に行番号を入れれば、新しく追加した行を両方削除することもできす：`cats[c(-4,-5), ]`
 
-Alternatively, we can drop all rows with `NA` values:
+または、`NA`の値がある全ての行を除くこともできます：
 
 
 ~~~
@@ -314,7 +308,7 @@ na.omit(cats)
 ~~~
 {: .output}
 
-Let's reassign the output to `cats`, so that our changes will be permanent:
+変更した内容を今後も使えるように、この結果を再度`cats` に入れましょう：
 
 
 ~~~
@@ -322,9 +316,9 @@ cats <- na.omit(cats)
 ~~~
 {: .language-r}
 
-## Removing columns  
+## 列の削除  
 
-We can also remove columns in our data frame. What if we want to remove the column "age". We can remove it in two ways, by variable number or by index.  
+データフレームから列を削除することもできます。列「age」を削除したい場合、どうすれば削除できるのでしょう。この場合、要素番号か見出しを使う２つの方法があります。
 
 
 ~~~
@@ -343,9 +337,9 @@ cats[,-4]
 ~~~
 {: .output}
 
-Notice the comma with nothing before it, indicating we want to keep all of the rows.  
+全ての行を持っていたいということを示すため、コンマの前に何も入っていない点に留意しましょう。
 
-Alternatively, we can drop the column by using the index name.  
+または、要素番号の名前を使って列を削除することもできます：
 
 
 ~~~
@@ -365,11 +359,10 @@ cats[,!drop]
 ~~~
 {: .output}
 
-## Appending to a data frame
+## データフレームへの追加
 
-The key to remember when adding data to a data frame is that *columns are
-vectors and rows are lists.* We can also glue two data frames
-together with `rbind`:
+データフレームにデータを加えるときに覚えておくべき重要なことは、*列はベクトルで、行はリスト* であることです。
+２つのデータフレームを `rbind` を使ってくっつけることもできます：
 
 
 ~~~
@@ -392,8 +385,7 @@ cats
 51 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
-But now the row names are unnecessarily complicated. We can remove the rownames,
-and R will automatically re-name them sequentially:
+しかし、いまや行の名前は必要以上に複雑です。この列名は削除することができます。削除すると、Rは自動的に連続する名称をつけます。
 
 
 ~~~
@@ -419,7 +411,7 @@ cats
 
 > ## チャレンジ２
 >
-> You can create a new data frame right from within R with the following syntax:
+> 新しいデータフレームを、以下の構文で、Rで正しく作成できます：
 > 
 > ~~~
 > df <- data.frame(id = c("a", "b", "c"),
@@ -428,16 +420,16 @@ cats
 >                  stringsAsFactors = FALSE)
 > ~~~
 > {: .language-r}
-> Make a data frame that holds the following information for yourself:
+> 自分で、以下の情報を持つデータフレームを作ってみましょう：
 >
 > - first name
 > - last name
 > - lucky number
 >
-> Then use `rbind` to add an entry for the people sitting beside you.
-> Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
+> そして `rbind` を使って、隣に座っている人の入力したものを加えましょう
+> 最後に `cbind` を使って、「コーヒーブレイクの時間ですか？」という質問への各自の回答を加えましょう
 >
-> > ## Solution to Challenge 2
+> > ## チャレンジ２の解答
 > > 
 > > ~~~
 > > df <- data.frame(first = c("Grace"),
@@ -451,10 +443,10 @@ cats
 > {: .solution}
 {: .challenge}
 
-## Realistic example
-So far, you have seen the basics of manipulating data frames with our cat data;
-now let's use those skills to digest a more realistic dataset. Let's read in the
-`gapminder` dataset that we downloaded previously:
+## 現実的な例
+これまで、猫のデータフレームで基本的なデータ操作を見てきました。
+ここからは、もっと現実的なデータセットで学んだスキルを試してみましょう。
+前にダウンロードした `gapminder` のデータセットを読み込みましょう：
 
 
 ~~~
@@ -462,13 +454,13 @@ gapminder <- read.csv("data/gapminder_data.csv")
 ~~~
 {: .language-r}
 
-> ## Miscellaneous Tips
+> ## いろいろなヒント
 >
-> * Another type of file you might encounter are tab-separated value files (.tsv). To specify a tab as a separator, use `"\\t"` or `read.delim()`.
+> * もう一つの遭遇するかもしれないファイルの種類は、タブで分けられた値のファイル（.tsv）です。タブを値を分けるものとして指定するためには、`"\\t"` または`read.delim()`を使いましょう。
 >
-> * Files can also be downloaded directly from the Internet into a local
-> folder of your choice onto your computer using the `download.file` function.
-> The `read.csv` function can then be executed to read the downloaded file from the download location, for example,
+> * ファイルは、`download.file` 関数を使って、インターネットから直接、自分のコンピューターの
+> お好みのローカルフォルダへダウンロードすることもできます。
+> `read.csv` 関数は、ダウンロードされたファイルをダウンロードされた場所から読み込む形で実行されます。例えば、
 > 
 > ~~~
 > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
@@ -476,19 +468,19 @@ gapminder <- read.csv("data/gapminder_data.csv")
 > ~~~
 > {: .language-r}
 >
-> * Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
+> * または、`read.csv` のファイルパスをウェブアドレスに置き換えることで、インターネットからRへ直接読み込むこともできます。こうすると、csvファイルのローカルコピーが、最初に自分のコンピューターに保存されないことに留意する必要があります。例えば、
 > 
 > ~~~
 > gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv")
 > ~~~
 > {: .language-r}
 >
-> * You can read directly from excel spreadsheets without
-> converting them to plain text first by using the [readxl](https://cran.r-project.org/web/packages/readxl/index.html) package.
+> * エクセルのシートからテキスト形式に変換することなく、直接読み込むことも、
+> [readxl](https://cran.r-project.org/web/packages/readxl/index.html) パッケージで可能です。
 {: .callout}
 
-Let's investigate gapminder a bit; the first thing we should always do is check
-out what the data looks like with `str`:
+gapminderを少し見てみましょう。いつも、まずしなければいけないことは、
+データがどうなっているかを`str`で見てみることです：
 
 
 ~~~
@@ -509,7 +501,7 @@ str(gapminder)
 ~~~
 {: .output}
 
-We can also examine individual columns of the data frame with our `typeof` function:
+データフレームのそれぞれの列を `typeof` 関数で調べることもできます：
 
 
 ~~~
@@ -552,9 +544,9 @@ str(gapminder$country)
 ~~~
 {: .output}
 
-We can also interrogate the data frame for information about its dimensions;
-remembering that `str(gapminder)` said there were 1704 observations of 6
-variables in gapminder, what do you think the following will produce, and why?
+データフレームの次元について見てみることもできます。
+ `str(gapminder)` が、gapminderには、6変数について1704の標本があると言っていたことを念頭に置き、
+以下から何が出てくると思いますか？それはなぜですか？
 
 
 ~~~
@@ -569,9 +561,8 @@ length(gapminder)
 ~~~
 {: .output}
 
-A fair guess would have been to say that the length of a data frame would be the
-number of rows it has (1704), but this is not the case; remember, a data frame
-is a *list of vectors and factors*:
+予想としては、データフレームの長さは行数（1704）だと思うものですが、実はそうではありません。
+データフレームは、*ベクトルと順序なし因子型のリストである*ということを思い出しましょう：
 
 
 ~~~
@@ -586,8 +577,8 @@ typeof(gapminder)
 ~~~
 {: .output}
 
-When `length` gave us 6, it's because gapminder is built out of a list of 6
-columns. To get the number of rows and columns in our dataset, try:
+`length`が、6と返ってくるのは、gapminderは、6つの列のリストから成っているからです。
+データセットで、行と列の数を知るためには、こうしてみましょう：
 
 
 ~~~
@@ -616,7 +607,7 @@ ncol(gapminder)
 ~~~
 {: .output}
 
-Or, both at once:
+または、両方を同時に：
 
 
 ~~~
@@ -631,8 +622,7 @@ dim(gapminder)
 ~~~
 {: .output}
 
-We'll also likely want to know what the titles of all the columns are, so we can
-ask for them later:
+全ての列のタイトルを知りたいと思うことも多いと思うので、後で聞いてみましょう：
 
 
 ~~~
@@ -647,15 +637,13 @@ colnames(gapminder)
 ~~~
 {: .output}
 
-At this stage, it's important to ask ourselves if the structure R is reporting
-matches our intuition or expectations; do the basic data types reported for each
-column make sense? If not, we need to sort any problems out now before they turn
-into bad surprises down the road, using what we've learned about how R
-interprets data, and the importance of *strict consistency* in how we record our
-data.
+この段階で、Rが伝える構造が自分の直感や予想と合っているかを自問することが大切です。
+それぞれの列の基本的なデータ型は、思った通りのデータ型になってますか？もしなっていないのなら、今後、予想外の事態を引き起こさないように、
+今の時点で、問題を解決しておく必要があります。そのためには、これまでに学んだ、Rがどのようにデータを解釈するか、
+そしてデータを記録する際の*厳格な整合性*の重要性といった知識を活かしましょう。
 
-Once we're happy that the data types and structures seem reasonable, it's time
-to start digging into our data proper. Check out the first few lines:
+データ型と構造に満足することができたら、データを詳しく見始めることができます。
+最初のいくつかの行を見てみましょう：
 
 
 ~~~
@@ -678,12 +666,12 @@ head(gapminder)
 
 > ## チャレンジ３
 >
-> It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
+> 最後と中間のいくつかの行を確認するのは良い習慣です。どうしたらこれらの行を見ることができるのでしょう？
 >
-> Searching for ones specifically in the middle isn't too hard but we could simply ask for a few lines at random. How would you code this?
+> ちょうど真ん中にあるものを探すことは、難しくはありません。しかし、いくつかの行を無作為に尋ねることもできます。これはどうコードにすればよいでしょうか。
 >
-> > ## Solution to Challenge 3
-> > To check the last few lines it's relatively simple as R already has a function for this:
+> > ## チャレンジ３の解答
+> > 最後のいくつかの行を調べるのは、比較的簡単です。Rには既に関数があるからです：
 > > 
 > > ~~~
 > > tail(gapminder)
@@ -691,10 +679,10 @@ head(gapminder)
 > > ~~~
 > > {: .r}
 > > 
-> > What about a few arbitrary rows just for sanity (or insanity depending on your view)?
-> > ## Tip: There are several ways to achieve this.
-> > The solution here presents one form using nested functions. i.e. a function passed as an argument to another function. This might sound like a new concept but you are already using it in fact.
-> > Remember my_dataframe[rows, cols] will print to screen your data frame with the number of rows and columns you asked for (although you might have asked for a range or named columns for example). How would you get the last row if you don't know how many rows your data frame has? R has a function for this. What about getting a (pseudorandom) sample? R also has a function for this.
+> > すっきりするために（人によっては、もやっとするかもしれませんが）、いくつかの任意の行については、どうでしょうか。
+> > ## ヒント：これには、いくつか方法があります。
+> > ここでの解答は、関数を入れ子にしたもの（つまり、他の関数に、因数として渡される関数）です。新しい概念のように聞こえるかもしれませんが、実はもう使っています。
+> > my_dataframe[rows, cols] は、（範囲または名前が付いた列を例えば聞いていたかもしれないとしても）質問した行と列の数と共にデータフレームを画面に表示させます。もし、データフレームに、いくつ行があるか知らない場合、どう最後の行を得るのでしょうか。Rには、そのための関数があります。では（疑似ランダム）サンプルを得るにはどうすればよいでしょうか。Rには、そのための関数もあります。
 > > ~~~
 > > gapminder[sample(nrow(gapminder), 5), ]
 > > ~~~
@@ -703,27 +691,26 @@ head(gapminder)
 {: .challenge}
 
 
-To make sure our analysis is reproducible, we should put the code
-into a script file so we can come back to it later.
+分析を再現可能にするためには、後で使えるようにコードをスクリプトファイルに置く必要があります。
 
 > ## チャレンジ４
 >
-> Go to file -> new file -> R script, and write an R script
-> to load in the gapminder dataset. Put it in the `scripts/`
-> directory and add it to version control.
+> まず、file -> new file -> R scriptへ行き、gapminder データセットを
+> 読み込むR scriptを書きましょう。それを、 `scripts/` ディレクトリに置き、
+> バージョン管理に追加しましょう。
 >
-> Run the script using the `source` function, using the file path
-> as its argument (or by pressing the "source" button in RStudio).
+> そのスクリプトを `source` 関数を使って走らせましょう。ファイルパスを引数にしましょう
+> （または、RStudioで「source」ボタンを押しましょう).
 >
-> > ## Solution to Challenge 4
-> > The contents of `scripts/load-gapminder.R`:
+> > ## チャレンジ４の解答
+> > `scripts/load-gapminder.R`の内容：
 > > 
 > > ~~~
 > > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
 > > gapminder <- read.csv(file = "data/gapminder_data.csv")
 > > ~~~
 > > {: .language-r}
-> > To run the script and load the data into the `gapminder` variable:
+> > `gapminder` 変数にデータを読み込みスクリプトを走らせるためには：
 > > 
 > > ~~~
 > > source(file = "scripts/load-gapminder.R")
@@ -734,18 +721,18 @@ into a script file so we can come back to it later.
 
 > ## チャレンジ５
 >
-> Read the output of `str(gapminder)` again;
-> this time, use what you've learned about factors, lists and vectors,
-> as well as the output of functions like `colnames` and `dim`
-> to explain what everything that `str` prints out for gapminder means.
-> If there are any parts you can't interpret, discuss with your neighbors!
+> `str(gapminder)` の結果を再び読みましょう。
+> 今度は、順序なし因数、リスト、ベクトルについて学んだことを使いましょう。
+> gapminder が何を意味するか `str` が表示する全てのことを説明するために、
+> `colnames` や `dim` などの出力関数を使いましょう。
+> 理解できないところがあれば、近くの人と話し合ってみましょう。
 >
-> > ## Solution to Challenge 5
+> > ## チャレンジ５の解答
 > >
-> > The object `gapminder` is a data frame with columns
-> > - `country` and `continent` are factors.
-> > - `year` is an integer vector.
-> > - `pop`, `lifeExp`, and `gdpPercap` are numeric vectors.
+> > `gapminder` というオブジェクトは、データフレームで、
+> > - `country` と `continent` という順序なし因子型、
+> > - `year` という整数型のベクトル、
+> > - `pop`、 `lifeExp`、 `gdpPercap` という数値型のベクトルの行を持っています。
 > >
 > {: .solution}
 {: .challenge}

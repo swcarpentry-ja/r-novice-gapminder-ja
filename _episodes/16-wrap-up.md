@@ -19,21 +19,20 @@ keypoints:
 source: Rmd
 ---
 
-## Structure your project folder
+## プロジェクトフォルダーを構造化する
 
-Keep your project folder structured, organized and tidy, by creating subfolders for your code files, manuals, data, binaries, output plots, etc. It can be done completely manually, or with the help of RStudio's `New Project` functionality, or a desginated package, such as `ProjectTemplate`.
+プロジェクトフォルダーを、コードファイル、マニュアル、データ、バイナリー、プロットの出力などのサブフォルダーを作ることで、構造化し、整理し、片づいた形にしておきましょう。全部、手作業でできますが、RStudioの `New Project` 機能、または、`ProjectTemplate` のように、その目的で作られたパッケージの助けを借りることもできます。
 
-> ## Tip: ProjectTemplate - a possible solution
+> ## ヒント：ProjectTemplateという使える解決策
 >
-> One way to automate the management of projects is to install the third-party package, `ProjectTemplate`.
-> This package will set up an ideal directory structure for project management.
-> This is very useful as it enables you to have your analysis pipeline/workflow organised and structured.
-> Together with the default RStudio project functionality and Git you will be able to keep track of your
-> work as well as be able to share your work with collaborators.
+> プロジェクトの管理を自動化する方法のひとつは、第三者パッケージである `ProjectTemplate` をインストールする方法です。
+> このパッケージは、プロジェクト管理に理想的なディレクトリ構造を作成します。
+> 自分の分析パイプライン（またはワークフロー）が整理、構造化されるので、これはとても役に立ちます。
+> RStudioのデフォルトプロジェクト機能とGitでも、自分の作業の履歴を保存し、他の共同作業者と作ったものをシェアできます。
 >
-> 1. Install `ProjectTemplate`.
-> 2. Load the library
-> 3. Initialise the project:
+> 1. `ProjectTemplate` をダウンロードする
+> 2. ライブラリを読み込む
+> 3. プロジェクトを開始する：
 >
 > 
 > ```r
@@ -42,60 +41,55 @@ Keep your project folder structured, organized and tidy, by creating subfolders 
 > create.project("../my_project", merge.strategy = "allow.non.conflict")
 > ```
 >
-> For more information on ProjectTemplate and its functionality visit the
-> home page [ProjectTemplate](http://projecttemplate.net/index.html)
+> ProjectTemplate及びその機能についてのについての更なる情報は、
+> 次のホームページから入手可能です [ProjectTemplate](http://projecttemplate.net/index.html)
 {: .callout}
 
 
-## Make code readable
+## コードを読めるようにする
 
-The most important part of writing code is making it readable and understandable.
-You want someone else to be able to pick up your code and be able to understand
-what it does: more often than not this someone will be you 6 months down the line,
-who will otherwise be cursing past-self.
+コードを書く際に一番重要なのが、それが読めて理解できるようにすることです。
+他の誰が自分のコードを取り上げ、何をするものか理解してほしいと思うでしょう。
+多くの場合、この誰かさんは、6か月後の自分で、もしコードが読めない、
+理解できない場合は、昔の自分に悪態をつくことになるでしょう。
 
-## Documentation: tell us what and why, not how
+## 文書化：何、なぜ、どのようにを伝えて下さい
 
-When you first start out, your comments will often describe what a command does,
-since you're still learning yourself and it can help to clarify concepts and
-remind you later. However, these comments aren't particularly useful later on
-when you don't remember what problem your code is trying to solve. Try to also
-include comments that tell you *why* you're solving a problem, and *what* problem
-that is. The *how* can come after that: it's an implementation detail you ideally
-shouldn't have to worry about.
+初めて始めたばかりのころは、コメントには、そのコマンドが何をするかを記したものが多いです。
+なぜならば、学び始めたばかりで、概念をはっきりさせるのに役立ち、後で思い出せるからです。
+しかしながら、後々、それらのコメントは、コードがどんな問題を解決しようとしていたのかを思い出そうと
+する際、そんなに役に立ちません。 自分は*何* の問題を、 *なぜ* 解こうとしているのかも、コメントに含めるようにしましょう。
+*どのように* については、その後の話です。導入の詳細は、理想的にはそこまで心配する必要はありません。
 
-## Keep your code modular
+## コードをモジュール化しましょう
 
-Our recommendation is that you should separate your functions from your analysis
-scripts, and store them in a separate file that you `source` when you open the R
-session in your project. This approach is nice because it leaves you with an
-uncluttered analysis script, and a repository of useful functions that can be
-loaded into any analysis script in your project. It also lets you group related
-functions together easily.
+おすすめは、関数を分析スクリプトと分けておｋ、別のファイルに保存しておき、
+プロジェクトでRのセッションを開いたときに、 `source` することです。
+このアプローチを取ると、分析スクリプトがちらからず、プロジェクトにある、どの分析スクリプトでも
+使える関数の貯蔵庫ができるので、良いと思います。
+また、同じような関数をまとめるが簡単になります。
 
-## Break down problem into bite size pieces
+## 問題をひとくち大に分ける
 
-When you first start out, problem solving and function writing can be daunting
-tasks, and hard to separate from code inexperience. Try to break down your
-problem into digestible chunks and worry about the implementation details later:
-keep breaking down the problem into smaller and smaller functions until you
-reach a point where you can code a solution, and build back up from there.
+初めて始めたときは、問題解決と関数の記述は、気が滅入るタスクで、
+コードの経験不足から分けることができないと思うかもしれません。問題を消化できる塊に分け、
+導入の詳細についての心配は、後回しにしましょう：
+問題を、解決方法をコード化できるまで、どんどん小さい関数に分けていきしましょう。
+そして、そこからまた積み上げるのです。
 
-## Know that your code is doing the right thing
+## コードが正しいことをしていること知りましょう
 
-Make sure to test your functions!
+関数をテストすることを、くれぐれも忘れないように。
 
-## Don't repeat yourself
+## 同じことを繰り返さないようにしましょう！
 
-Functions enable easy reuse within a project. If you see blocks of similar
-lines of code through your project, those are usually candidates for being
-moved into functions.
+関数は、プロジェクトの中で簡単に再利用できます。もし、プロジェクトで、同じようなコードの行の塊を
+見つけたら、大抵、それが関数に移す候補たちです。
 
-If your calculations are performed through a series of functions, then the
-project becomes more modular and easier to change. This is especially the case
-for which a particular input always gives a particular output.
+もし、計算が、一連の関数で行われていた場合、プロジェクトは、よりモジュール化され、変更するのが簡単になります。
+これは、特定のインプットが必ず特定のアウトプットを返す場合に特にあてはまります。
 
-## Remember to be stylish
+## 常にスタイリッシュであろうとする
 
-Apply consistent style to your code.
+自分のコードに一貫性のあるスタイルを適用しましょう。
 
