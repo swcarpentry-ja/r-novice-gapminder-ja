@@ -21,13 +21,13 @@ source: Rmd
 
 
 
-R has many powerful subset operators. Mastering them will allow you to
-easily perform complex operations on any kind of dataset.
+Rには、かなり使える部分集合の演算子があります。もし、それをマスターできたら、
+どんなデータセットにも複雑な演算を簡単にすることができます。
 
 There are six different ways we can subset any kind of object, and three
 different subsetting operators for the different data structures.
 
-Let's start with the workhorse of R: a simple numeric vector.
+Rの働き頭から始めましょう：簡単な数値ベクトル
 
 
 ~~~
@@ -45,18 +45,16 @@ x
 ~~~
 {: .output}
 
-> ## Atomic vectors
+> ## 原子ベクトル
 >
-> In R, simple vectors containing character strings, numbers, or logical values are called *atomic* vectors because they can't be further simplified.
+> Rでは、文字列、数値、論理値を含む単純なベクトルは、*原子（atomic）* ベクトルと呼ばれています。その理由は、原子ベクトルはそれ以上単純化できないからです。
 {: .callout}
 
-So now that we've created a dummy vector to play with, how do we get at its
-contents?
+ちょっと触ってみるためのダミーベクトルを作ることができたのですが、どうやってベクトルの中身を使うのでしょう？
 
-## Accessing elements using their indices
+## 要素番号で要素を使う
 
-To extract elements of a vector we can give their corresponding index, starting
-from one:
+ベクトルの要素を抽出するためには、対応する１から始まる要素番号を使います：
 
 
 ~~~
@@ -86,10 +84,10 @@ x[4]
 ~~~
 {: .output}
 
-It may look different, but the square brackets operator is a function. For vectors
-(and matrices), it means "get me the nth element".
+違うふうに見えるかもしれませんが、各括弧の演算子は、関数なのです。ベクトル（及び行列）の場合は、
+「n番目の要素をちょうだい」ということを意味しています。
 
-We can ask for multiple elements at once:
+複数の要素を一度に頼むこともできます：
 
 
 ~~~
@@ -105,7 +103,7 @@ x[c(1, 3)]
 ~~~
 {: .output}
 
-Or slices of the vector:
+または、ベクトルのスライスを頼むこともできます：
 
 
 ~~~
@@ -121,7 +119,7 @@ x[1:4]
 ~~~
 {: .output}
 
-the `:` operator creates a sequence of numbers from the left element to the right.
+この演算子 `:` は、左から右の要素の一連番号を作ります。
 
 ~~~
 1:4
@@ -150,7 +148,7 @@ c(1, 2, 3, 4)
 {: .output}
 
 
-We can ask for the same element multiple times:
+同じ要素を何度も頼むこともできます：
 
 
 ~~~
@@ -166,7 +164,7 @@ x[c(1,1,3)]
 ~~~
 {: .output}
 
-If we ask for an index beyond the length of the vector, R will return a missing value:
+もしベクトルの長さ以上の要素番号を頼んだ場合、Rは、欠測値を返します：
 
 ~~~
 x[6]
@@ -181,9 +179,9 @@ x[6]
 ~~~
 {: .output}
 
-This is a vector of length one containing an `NA`, whose name is also `NA`.
+これは、 `NA` を含む、`NA` という名前の長さ１のベクトルです。
 
-If we ask for the 0th element, we get an empty vector:
+もし、0番目の要素を頼んだ場合、空ベクトルが返ってきます：
 
 
 ~~~
@@ -198,16 +196,16 @@ named numeric(0)
 ~~~
 {: .output}
 
-> ## Vector numbering in R starts at 1
+> ## Rのベクトル番号は、１から始まる
 >
-> In many programming languages (C and Python, for example), the first
-> element of a vector has an index of 0. In R, the first element is 1.
+> 多くのプログラミング言語（例えば、C、Python）では、ベクトルの最初の
+> 要素の要素番号は０です。Rでは、最初の要素番号は１なのです。
 {: .callout}
 
-## Skipping and removing elements
+## 要素を飛ばす、削除する
 
-If we use a negative number as the index of a vector, R will return
-every element *except* for the one specified:
+もし、負の番号をベクトルの要素番号として使った場合、Rは指定された番号
+ *以外の* 全ての要素を返します：
 
 
 ~~~
@@ -223,7 +221,7 @@ x[-2]
 ~~~
 {: .output}
 
-We can skip multiple elements:
+複数の要素を飛ばすこともできます：
 
 
 ~~~
@@ -239,11 +237,10 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 ~~~
 {: .output}
 
-> ## Tip: Order of operations
+> ## ヒント：演算の順番
 >
-> A common trip up for novices occurs when trying to skip
-> slices of a vector. It's natural to try to negate a
-> sequence like so:
+> 初心者のよくある失敗は、ベクトルのスライスを飛ばしてしまうことです。
+> 数列に負の符号を付けようとするとき、次のようにすることはありがちです：
 >
 > 
 > ~~~
@@ -259,12 +256,12 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > ~~~
 > {: .error}
 >
-> But remember the order of operations. `:` is really a function.
-> It takes its first argument as -1, and its second as 3,
-> so generates the sequence of numbers: `c(-1, 0, 1, 2, 3)`.
+> でも、演算の順番を思い出してみて下さい。`:` は、実際には、関数なのです。
+> 最初の引数を-1、次のを3として認識し、次のような数列を生成します。
+> `c(-1, 0, 1, 2, 3)`
 >
-> The correct solution is to wrap that function call in brackets, so
-> that the `-` operator applies to the result:
+> 正解は、関数を呼ぶ部分を括弧で囲むことです。
+> そうすると関数の結果全てに`-` の演算子が適応されます：
 >
 > 
 > ~~~
@@ -282,8 +279,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 {: .callout}
 
 
-To remove elements from a vector, we need to assign the result back
-into the variable:
+ベクトルから要素を削除するには、結果を変数に戻してやる必要があります。
 
 
 ~~~
@@ -302,7 +298,7 @@ x
 
 > ## チャレンジ１
 >
-> Given the following code:
+> 以下のコードがあるとします：
 >
 > 
 > ~~~
@@ -320,7 +316,7 @@ x
 > ~~~
 > {: .output}
 >
-> Come up with at least 2 different commands that will produce the following output:
+> 以下のアウトプットを得るために、少なくとも２つの異なるコマンドを考えてください：
 >
 > 
 > ~~~
@@ -329,9 +325,9 @@ x
 > ~~~
 > {: .output}
 >
-> After you find 2 different commands, compare notes with your neighbour. Did you have different strategies?
+> ２つの異なるコマンドを考えた後、隣の人と結果を比べましょう。自分とは違う案でしたか？
 >
-> > ## Solution to challenge 1
+> > ## チャレンジ１の解答
 > >
 > > 
 > > ~~~
@@ -376,13 +372,13 @@ x
 > {: .solution}
 {: .challenge}
 
-## Subsetting by name
+## 名前で部分集合を作る
 
-We can extract elements by using their name, instead of extracting by index:
+要素番号で抜き出す代わりに、名前で要素を抽出することもできます。
 
 
 ~~~
-x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we can name a vector 'on the fly'
+x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # ベクトルを'その場で'名づけることができます
 x[c("a", "c")]
 ~~~
 {: .language-r}
@@ -395,13 +391,13 @@ x[c("a", "c")]
 ~~~
 {: .output}
 
-This is usually a much more reliable way to subset objects: the
-position of various elements can often change when chaining together
-subsetting operations, but the names will always remain the same!
+オブジェクトの部分集合を作るには、この方法の方が確実なやり方です：要素の場所は、
+部分集合の演算子を繋いで使うことでよく変わるのですが。
+名前は変わらないのです！
 
-## Subsetting through other logical operations
+## 他の論理演算子を使って部分集合を作る
 
-We can also use any logical vector to subset:
+どんな論理ベクトルでも部分集合を作ることができます：
 
 
 ~~~
@@ -417,9 +413,8 @@ x[c(FALSE, FALSE, TRUE, FALSE, TRUE)]
 ~~~
 {: .output}
 
-Since comparison operators (e.g. `>`, `<`, `==`) evaluate to logical vectors, we can also
-use them to succinctly subset vectors: the following statement gives
-the same result as the previous one.
+比較演算子（例えば、 `>`、`<`、 `==`）は、その結果が論理ベクトルになるので、簡潔にベクトルの部分集合を作ることができます。
+つまり、以下の宣言は、前と同じ結果を返します。
 
 
 ~~~
@@ -435,12 +430,12 @@ x[x > 7]
 ~~~
 {: .output}
 
-Breaking it down, this statement first evaluates `x>7`, generating
-a logical vector `c(FALSE, FALSE, TRUE, FALSE, TRUE)`, and then
-selects the elements of `x` corresponding to the `TRUE` values.
+分割すると、この宣言は、最初に `x>7` を計算し、論理ベクトル
+`c(FALSE, FALSE, TRUE, FALSE, TRUE)` を作ります。それから、
+`TRUE` の値に対応する `x` 要素を選択します。
 
-We can use `==` to mimic the previous method of indexing by name
-(remember you have to use `==` rather than `=` for comparisons):
+名前で特定するという既出の方法を真似するため、 `==` を使うこともできます。
+（比較には、 `=` ではなく、 `==` を使わないといけません）：
 
 
 ~~~
@@ -456,38 +451,35 @@ x[names(x) == "a"]
 ~~~
 {: .output}
 
-> ## Tip: Combining logical conditions
+> ## ヒント：論理条件を組み合わせる
 >
-> We often want to combine multiple logical
-> criteria. For example, we might want to find all the countries that are
-> located in Asia **or** Europe **and** have life expectancies within a certain
-> range. Several operations for combining logical vectors exist in R:
+> 複数の論理基準を組み合わせたい場合はよくあります。
+> 例えば、アジア**または** ヨーロッパに位置し、なお**かつ** ある一定の範囲の平均余命
+> の国を見つけたいとします。
+> Rにが論理ベクトルを複数組み合わせる演算子があります：
 >
->  * `&`, the "logical AND" operator: returns `TRUE` if both the left and right
->    are `TRUE`.
->  * `|`, the "logical OR" operator: returns `TRUE`, if either the left or right
->    (or both) are `TRUE`.
+>  * `&`、「論理積」演算子：もし左と右の両方が `TRUE` であれば、`TRUE`
+>  * `|`、「論理和」 演算子：もし左と右のどちらか（または両方）が `TRUE` であれば、`TRUE`
 >
-> You may sometimes see `&&` and `||` instead of `&` and `|`. These two-character operators
-> only look at the first element of each vector and ignore the
-> remaining elements. In general you should not use the two-character
-> operators in data analysis; save them
-> for programming, i.e. deciding whether to execute a statement.
+> `&` 及び `|` の代わりに、 `&&` 及び `||` を見かけることもあるでしょう。
+> この二重になっている演算子は、それぞれのベクトルの最初の要素だけを見て、残りを無視するものです。
+> 一般的に、この二重になっている演算子は、データ分析では使わずに、
+> プログラミングの際に（つまり、ある宣言を実行するかどうかを決める際に）
+> 使うことをおすすめします。
 >
->  * `!`, the "logical NOT" operator: converts `TRUE` to `FALSE` and `FALSE` to
->    `TRUE`. It can negate a single logical condition (eg `!TRUE` becomes
->    `FALSE`), or a whole vector of conditions(eg `!c(TRUE, FALSE)` becomes
->    `c(FALSE, TRUE)`).
+>  * `!`、「論理否定」演算子：`TRUE` を `FALSE` に、 `FALSE` を`TRUE`に変換します。
+>    否定できるのは、一つの論理条件（例 `!TRUE` が `FALSE`へ）
+>    または、条件のベクトル全体（例 `!c(TRUE, FALSE)` が、
+>    `c(FALSE, TRUE)` へ）です。
 >
-> Additionally, you can compare the elements within a single vector using the
-> `all` function (which returns `TRUE` if every element of the vector is `TRUE`)
-> and the `any` function (which returns `TRUE` if one or more elements of the
-> vector are `TRUE`).
+> 加えて、`all` 関数（ベクトルの全ての要素が `TRUE` である場合、`TRUE` を返す)及び
+> `any` 関数（ベクトルのうち最低１つ、`TRUE` がある場合、`TRUE`を返す)を使って
+> ひとつのベクトルの中にある要素を比較することもできます。
 {: .callout}
 
 > ## チャレンジ２
 >
-> Given the following code:
+> 以下のコードがあるとします：
 >
 > 
 > ~~~
@@ -505,9 +497,9 @@ x[names(x) == "a"]
 > ~~~
 > {: .output}
 >
-> Write a subsetting command to return the values in x that are greater than 4 and less than 7.
+> 4よりも大きく7より小さいxの値を返す部分集合を作るコマンドを書きましょう。
 >
-> > ## Solution to challenge 2
+> > ## チャレンジ２の解答
 > >
 > > 
 > > ~~~
@@ -527,12 +519,12 @@ x[names(x) == "a"]
 {: .challenge}
 
 
-> ## Tip: Non-unique names
+> ## ヒント：同じ名前がある場合
 >
-> You should be aware that it is possible for multiple elements in a
-> vector to have the same name. (For a data frame, columns can have
-> the same name --- although R tries to avoid this --- but row names
-> must be unique.) Consider these examples:
+> ベクトルの中の要素に、同じ名前を持つものがあるかもしれないということを知っておく必要があります。
+> （データフレームでは、--- Rは避けようとしますが --- 列に同じ名前を付けることもできます。
+> 一方で、行の名前は、全て違う必要があります）
+> これらの例を考えてみましょう：
 >
 >
 >~~~
@@ -582,7 +574,7 @@ x[names(x) == "a"]
 >
 >
 >~~~
-> x[names(x) == 'a']  # returns all three values
+> x[names(x) == 'a']  # ３つ全ての値を返す
 >~~~
 >{: .language-r}
 >
@@ -595,20 +587,20 @@ x[names(x) == "a"]
 >{: .output}
 {: .callout}
 
-> ## Tip: Getting help for operators
+> ## ヒント：演算子についてのヘルプを見る
 >
-> Remember you can search for help on operators by wrapping them in quotes:
-> `help("%in%")` or `?"%in%"`.
+> 演算子を引用符で囲むことで、演算子についてのヘルプを検索できることを覚えておきましょう：
+> `help("%in%")` または `?"%in%"`.
 >
 {: .callout}
 
-## Skipping named elements
+## 名前のある要素を飛ばす
 
-Skipping or removing named elements is a little harder. If we try to skip one named element by negating the string, R complains (slightly obscurely) that it doesn't know how to take the negative of a string:
+名前のある要素を飛ばしたり削除したりすることは少しだけ難しくなります。もし、ある文字列にマイナス記号を付けて飛ばそうとすると、Rは文字列にマイナス記号を付ける方法を知らないと（若干控えめに）抗議するでしょう：
 
 
 ~~~
-x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # we start again by naming a vector 'on the fly'
+x <- c(a=5.4, b=6.2, c=7.1, d=4.8, e=7.5) # まず、ベクトルにその場で名前を付けることから、また始めます
 x[-"a"]
 ~~~
 {: .language-r}
@@ -620,7 +612,7 @@ Error in -"a": invalid argument to unary operator
 ~~~
 {: .error}
 
-However, we can use the `!=` (not-equals) operator to construct a logical vector that will do what we want:
+でも、`!=` （不等号）演算子を使えば、やってもらいたかったことをしてくれる論理ベクトルが作れます：
 
 
 ~~~
@@ -636,7 +628,7 @@ x[names(x) != "a"]
 ~~~
 {: .output}
 
-Skipping multiple named indices is a little bit harder still. Suppose we want to drop the `"a"` and `"c"` elements, so we try this:
+複数の名前のある要素番号を飛ばすことは、少しですが、さらに難しくなります。`"a"` と`"c"` の要素を削除したいとき、以下を試したとしましょう：
 
 
 ~~~
@@ -660,13 +652,13 @@ of shorter object length
 ~~~
 {: .output}
 
-R did *something*, but it gave us a warning that we ought to pay attention to - and it apparently *gave us the wrong answer* (the `"c"` element is still included in the vector)!
+Rは *何か* をしたのですが、私達が注目しなければならない警告も出しました。結果としては、どうやら *間違った回答* が帰ってきたみたいです（`"c"` の要素が、ベクトルに含まれています）！
 
-So what does `!=` actually do in this case? That's an excellent question.
+ではいったい、 `!=` は、ここで実際に何をしたのでしょう。これは素晴らしい質問です。
 
-### Recycling
+### 再利用
 
-Let's take a look at the comparison component of this code:
+このコードの比較する部分を見てみましょう：
 
 
 ~~~
@@ -689,22 +681,21 @@ of shorter object length
 ~~~
 {: .output}
 
-Why does R give `FALSE` as the third element of this vector, when `names(x)[3] != "c"` is obviously false?
-When you use `!=`, R tries to compare each element
-of the left argument with the corresponding element of its right
-argument. What happens when you compare vectors of different lengths?
+Rは、`names(x)[3] != "c"` が明らかに間違いであるときに、このベクトルの３番目の要素として、なぜ`TRUE` にしたのでしょうか。
+`!=` を使うとき、Rは、左側の引数のそれぞれの要素を、右側のそれぞれの要素と比較しようとします。
+違う長さのベクトルを比較しようとすると、何が起こるのでしょう？
 
 ![Inequality testing](../fig/06-rmd-inequality.1.png)
 
-When one vector is shorter than the other, it gets *recycled*:
+もし、もう一つのベクトルよりも短いベクトルがあったとき、そのベクトルは*再利用されます*：
 
 ![Inequality testing: results of recycling](../fig/06-rmd-inequality.2.png)
 
-In this case R **repeats** `c("a", "c")` as many times as necessary to match `names(x)`, i.e. we get `c("a","c","a","c","a")`. Since the recycled `"a"`
-doesn't match the third element of `names(x)`, the value of `!=` is `TRUE`.
-Because in this case the longer vector length (5) isn't a multiple of the shorter vector length (2), R printed a warning message. If we had been unlucky and `names(x)` had contained six elements, R would *silently* have done the wrong thing (i.e., not what we intended it to do). This recycling rule can can introduce hard-to-find and subtle bugs!
+この場合、Rは `c("a", "c")` を `names(x)` に合わせるのに必要な分だけ**繰り返します**。つまり、`c("a","c","a","c","a")`となります。
+再利用された`"a"` は、 `names(x)` の３番目の要素と一致しないため、 `!=` の値は、`TRUE` なのです。
+この場合、長い方のベクトルの長さ（５）は、短い方のベクトルの長さ（２）と一致しないので、Rは、警告メッセージを出力しました。もしも運悪く`names(x)` が６つの要素を持っていた場合、Rは*警告せずに* 間違った（意図していなかった）ことを行っていたでしょう。この再利用のルールは、見つけるのがとても難しく、とらえがたいバグをもたらすことがあります！
 
-The way to get R to do what we really want (match *each* element of the left argument with *all* of the elements of the right argument) it to use the `%in%` operator. The `%in%` operator goes through each element of its left argument, in this case the names of `x`, and asks, "Does this element occur in the second argument?". Here, since we want to *exclude* values, we also need a `!` operator to change "in" to "not in":
+Rに本当にやってもらいたいこと（左の引数の *それぞれの* 要素を、右の引数の要素の *全て* にマッチさせこと）をしてもらうには、 `%in%` 演算子を使う必要があります。`%in%` 演算子は、左の引数のそれぞれの要素、ここでは `x` の名前にひとつづつ 「この要素は、２番目の引数にあるかな」と尋ねていきます。ここで、値を *除く* ため、「中にある（in）」を「中にない（not in）」に変える `!` 演算子が必要です。
 
 
 ~~~
@@ -722,72 +713,68 @@ x[! names(x) %in% c("a","c") ]
 
 > ## チャレンジ３
 >
-> Selecting elements of a vector that match any of a list of components
-> is a very common data analysis task. For example, the gapminder data set
-> contains `country` and `continent` variables, but no information between
-> these two scales. Suppose we want to pull out information from southeast
-> Asia: how do we set up an operation to produce a logical vector that
-> is `TRUE` for all of the countries in southeast Asia and `FALSE` otherwise?
+> データ分析をするにあたって、リスト内にある要素をベクトルの中から選択するのは
+> よくあることです。例えば、gapminderのデータセットには、
+> `国（country）` 及び `大陸（continent）` 変数があるけれども、これら２つの目盛りの間
+> をつなぐ情報はありません。例えば東南アジアの情報を引き出したい場合、
+> 全ての東南アジアの国を `TRUE` とし、その他を`FALSE`とする論理ベクトルを作る処理を
+> どのように構築するのでしょう？
 >
-> Suppose you have these data:
+> 次のようなデータを持っているとします：
 > 
 > ~~~
 > seAsia <- c("Myanmar","Thailand","Cambodia","Vietnam","Laos")
-> ## read in the gapminder data that we downloaded in episode 2
+> ## エピソード２でダウンロードしたgapminderのデータを読み込む
 > gapminder <- read.csv("data/gapminder_data.csv", header=TRUE)
-> ## extract the `country` column from a data frame (we'll see this later);
-> ## convert from a factor to a character;
-> ## and get just the non-repeated elements
+> ## `country` 列をデータフレームから読み込む（これを後で見ます）
+> ## 順序なし因子を文字列へ変換します
+> ## すると、繰り返していない要素だけを得られます
 > countries <- unique(as.character(gapminder$country))
 > ~~~
 > {: .language-r}
 >
-> There's a wrong way (using only `==`), which will give you a warning;
-> a clunky way (using the logical operators `==` and `|`); and
-> an elegant way (using `%in%`). See whether you can come up with all three
-> and explain how they (don't) work.
+> 警告が出てくる、間違った方法（ `==` のみを使う）、
+> 粗削りな方法（論理演算子 `==` 及び `|` を使う）、
+> 洗練された方法（ `%in%` を使う）があります。
+> これら３つの方法それぞれの例を考え、それぞれがどう動く（動かない）か説明してください。
 > 
-> > ## Solution to challenge 3
+> > ## チャレンジ３の解答
 > >
-> > - The **wrong** way to do this problem is `countries==seAsia`. This
-> > gives a warning (`"In countries == seAsia : longer object length is not a multiple of shorter object length"`) and the wrong answer (a vector of all
-> > `FALSE` values), because none of the recycled values of `seAsia` happen
-> > to line up correctly with matching values in `country`.
-> > - The **clunky** (but technically correct) way to do this problem is
+> > - この問題に対する**誤った** 方法は、`countries==seAsia` です。
+> > これには、警告（`"In countries == seAsia : longer object length is not a multiple of shorter object length"`）が出ると共に、
+> > 誤った回答（全てが `FALSE` の値を持つベクトル）をもたらします。なぜなら、`seAsia` の再利用された値のどれも、
+> > `country` の値と正しく一致する並びになっていないからです。
+> > - この問題に対する**粗削りな** （でも技術的には合っている）方法は、
 > > 
 > > ~~~
 > >  (countries=="Myanmar" | countries=="Thailand" |
 > >  countries=="Cambodia" | countries == "Vietnam" | countries=="Laos")
 > > ~~~
 > > {: .language-r}
-> > (or `countries==seAsia[1] | countries==seAsia[2] | ...`). This
-> > gives the correct values, but hopefully you can see how awkward it
-> > is (what if we wanted to select countries from a much longer list?).
-> > - The best way to do this problem is `countries %in% seAsia`, which
-> > is both correct and easy to type (and read).
+> > （または `countries==seAsia[1] | countries==seAsia[2] | ...`）。
+> > これは正しい値を返すのですが、この方法がどれだけ不格好であるか理解できれば上出来です
+> > （もっと長いリストから国を選ぶ場合は、この方法だったらどうなっていたでしょう？）。
+> > - この問題に対する一番良い方法は、`countries %in% seAsia` で、
+> > 正しい回答でもあり、タイプする（読む）のも楽です。
 > {: .solution}
 {: .challenge}
 
-## Handling special values
+## 特別な値を扱う
 
-At some point you will encounter functions in R that cannot handle missing, infinite,
-or undefined data.
+ある時点で、欠測値、無限値、未定義のデータを扱えないRの関数に出会うことでしょう。
 
-There are a number of special functions you can use to filter out this data:
+データをフィルターするために使える特別な関数がいくつかあります：
 
- * `is.na` will return all positions in a vector, matrix, or data.frame
-   containing `NA` (or `NaN`)
- * likewise, `is.nan`, and `is.infinite` will do the same for `NaN` and `Inf`.
- * `is.finite` will return all positions in a vector, matrix, or data.frame
-   that do not contain `NA`, `NaN` or `Inf`.
- * `na.omit` will filter out all missing values from a vector
+ * `is.na` は、ベクトル、行列、データフレームで、 全ての`NA` （または `NaN` ）を含む位置を返します
+ * これと同じことを `NaN` 及び `Inf` にするのが `is.nan` 及び `is.infinite` です
+ * `is.finite` は、ベクトル、行列、データフレームで、 全ての`NA`, `NaN` または `Inf`を含まない位置を返します
+ * `na.omit` は、ベクトルから欠損値をフィルターし、除きます
 
-## Factor subsetting
+## 順序のない因子の部分集合を作る
 
-Now that we've explored the different ways to subset vectors, how
-do we subset the other data structures?
+これまで部分集合ベクトルを作る色々な方法をやってみましたが、他のデータ構造の部分集合を作るにはどうすればいいでしょう。
 
-Factor subsetting works the same way as vector subsetting.
+順序なし因子の部分集合を作る方法は、ベクトルの部分集合を作る方法と同じです。
 
 
 ~~~
@@ -834,8 +821,7 @@ Levels: a b c d
 ~~~
 {: .output}
 
-Skipping elements will not remove the level
-even if no more of that category exists in the factor:
+要素を飛ばし、その順序なし因子に該当カテゴリーが存在しない場合であっても、水準は削除されません：
 
 
 ~~~
@@ -851,11 +837,10 @@ Levels: a b c d
 ~~~
 {: .output}
 
-## Matrix subsetting
+## 行列の部分周到を作る
 
-Matrices are also subsetted using the `[` function. In this case
-it takes two arguments: the first applying to the rows, the second
-to its columns:
+行列も `[` 関数を使うことで部分集合を作ることができます。この場合、
+２つの引数があります。最初の引数は適応する行を、２番目の引数は適応する列を指します：
 
 
 ~~~
@@ -874,8 +859,7 @@ m[3:4, c(3,1)]
 ~~~
 {: .output}
 
-You can leave the first or second arguments blank to retrieve all the
-rows or columns respectively:
+それぞれ全ての列または行を取ってくるために、この最初または２番目の引数を空のままにしておくこともできます：
 
 
 ~~~
@@ -896,8 +880,7 @@ m[, c(3,4)]
 ~~~
 {: .output}
 
-If we only access one row or column, R will automatically convert the result
-to a vector:
+１つの列または行にアクセスした場合、Rは、結果を自動的にベクトルに変換します：
 
 
 ~~~
@@ -912,8 +895,8 @@ m[3,]
 ~~~
 {: .output}
 
-If you want to keep the output as a matrix, you need to specify a *third* argument;
-`drop = FALSE`:
+もし、アウトプットを行列のままにしておきたいなら、*３番目の* 因数、
+`drop = FALSE` が必要です：
 
 
 ~~~
@@ -929,8 +912,7 @@ m[3, , drop=FALSE]
 ~~~
 {: .output}
 
-Unlike vectors, if we try to access a row or column outside of the matrix,
-R will throw an error:
+ベクトルと違って、行列の外の行や列にアクセスしようとしたとき、Rはエラーを返します：
 
 
 ~~~
@@ -945,16 +927,14 @@ Error in m[, c(3, 6)]: subscript out of bounds
 ~~~
 {: .error}
 
-> ## Tip: Higher dimensional arrays
+> ## ヒント：高次元列
 >
-> when dealing with multi-dimensional arrays, each argument to `[`
-> corresponds to a dimension. For example, a 3D array, the first three
-> arguments correspond to the rows, columns, and depth dimension.
+> 多次元列を扱う際、`[` のそれぞれの引数は、次元に対応しています。 
+> 例えば、3次元列は、最初の３つの引数が、行、列、次元の深さに対応してます。
 >
 {: .callout}
 
-Because matrices are vectors, we can
-also subset using only one argument:
+行列は、ベクトルなので、１つの引数だけを使って部分集合を作ることもできます：
 
 
 ~~~
@@ -970,9 +950,8 @@ m[5]
 {: .output}
 
 
-This usually isn't useful, and often confusing to read. However it is useful to note that matrices
-are laid out in *column-major format* by default. That is the elements of the
-vector are arranged column-wise:
+これは、普段使うには役に立たず、読むときにも混乱を招きます。ですが、行列は *列順序（column-major format）* で
+デフォルト配置されるということを覚えておくといいでしょう。つまり、ベクトルの要素は、列にある順番で配置されています。
 
 
 ~~~
@@ -989,7 +968,7 @@ matrix(1:6, nrow=2, ncol=3)
 ~~~
 {: .output}
 
-If you wish to populate the matrix by row, use `byrow=TRUE`:
+もし、行列を、行の順番で埋めていきたい場合は、 `byrow=TRUE` を使います：
 
 
 ~~~
@@ -1006,12 +985,11 @@ matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 ~~~
 {: .output}
 
-Matrices can also be subsetted using their rownames and column names
-instead of their row and column indices.
+行列もまた、行及び列の要素番号の代わりに、名前で部分集合を作ることができます。
 
 > ## チャレンジ４
 >
-> Given the following code:
+> 以下のコードがあるとしましょう：
 >
 > 
 > ~~~
@@ -1030,7 +1008,7 @@ instead of their row and column indices.
 > ~~~
 > {: .output}
 >
-> 1. Which of the following commands will extract the values 11 and 14?
+> 1. 次のコマンドのうち、11と14を抜き出すことができるコマンドはどれでしょう？
 >
 > A. `m[2,4,2,5]`
 >
@@ -1040,20 +1018,20 @@ instead of their row and column indices.
 >
 > D. `m[2,c(4,5)]`
 >
-> > ## Solution to challenge 4
+> > ## チャレンジ４の解答
 > >
 > > D
 > {: .solution}
 {: .challenge}
 
 
-## List subsetting
+## リストの分部集合を作る
 
-Now we'll introduce some new subsetting operators. There are three functions
-used to subset lists. We've already seen these when learning about atomic vectors and matrices:  `[`, `[[`, and `$`.
+ここで新しい部分集合を作る演算子を御紹介しましょう。リストの部分集合を作る関数は３つあります。
+原子ベクトルと行列について学んだ時に、既に見たものです： `[` 、 `[[` 、`$`
 
-Using `[` will always return a list. If you want to *subset* a list, but not
-*extract* an element, then you will likely use `[`.
+ `[` を使えばいつもリストが返ってきます。リストの *部分集合* を作りたいけれども、
+要素を *抜き出したい* わけではないときは、おそらく `[` を使うことが多いでしょう。
 
 
 ~~~
@@ -1070,13 +1048,11 @@ $a
 ~~~
 {: .output}
 
-This returns a *list with one element*.
+これは、 *１つの要素を持つリスト* です。
 
-We can subset elements of a list exactly the same way as atomic
-vectors using `[`. Comparison operations however won't work as
-they're not recursive, they will try to condition on the data structures
-in each element of the list, not the individual elements within those
-data structures.
+`[` を使い原子ベクトルを作ったのと全く同じ方法で、リストの要素から部分集合を作ることができます。
+しかし、比較処理は反復的ではないため、使えません。比較処理は、リストのそれぞれの要素のデータ構造にある、個々の要素ではなく、
+データ構造に条件付けをしようとするからです。
 
 
 ~~~
@@ -1095,8 +1071,7 @@ $b
 ~~~
 {: .output}
 
-To extract individual elements of a list, you need to use the double-square
-bracket function: `[[`.
+リストの個々の要素を抜き出すためには、二重角括弧 `[[` を使う必要があります：
 
 
 ~~~
@@ -1111,9 +1086,9 @@ xlist[[1]]
 ~~~
 {: .output}
 
-Notice that now the result is a vector, not a list.
+ここで結果がリストではなく、ベクトルとなっていることに気をつけましょう。
 
-You can't extract more than one element at once:
+１つの要素を同時に抜き出すことはできません：
 
 
 ~~~
@@ -1128,7 +1103,7 @@ Error in xlist[[1:2]]: subscript out of bounds
 ~~~
 {: .error}
 
-Nor use it to skip elements:
+また、要素を飛ばすこともできません：
 
 
 ~~~
@@ -1143,7 +1118,7 @@ Error in xlist[[-1]]: attempt to select more than one element in get1index <real
 ~~~
 {: .error}
 
-But you can use names to both subset and extract elements:
+でも両方の部分集合の名前を使って、要素を抽出することはできます：
 
 
 ~~~
@@ -1158,7 +1133,7 @@ xlist[["a"]]
 ~~~
 {: .output}
 
-The `$` function is a shorthand way for extracting elements by name:
+ `$` 関数は、簡単に名前で要素を抽出できるものです。
 
 
 ~~~
@@ -1180,7 +1155,7 @@ xlist$data
 {: .output}
 
 > ## チャレンジ５
-> Given the following list:
+> 以下のリストがあるとしましょう：
 >
 > 
 > ~~~
@@ -1188,10 +1163,10 @@ xlist$data
 > ~~~
 > {: .language-r}
 >
-> Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
-> Hint: the number 2 is contained within the "b" item in the list.
+> リストとベクトルの部分集合を作る知識を使って、xlistから、数字の2を抜き出してみましょう。
+> ヒント：数字の2は、リスト「b」の中にあります。
 >
-> > ## Solution to challenge 5
+> > ## チャレンジ５の解答
 > >
 > > 
 > > ~~~
@@ -1233,8 +1208,8 @@ xlist$data
 {: .challenge}
 
 
-> ## Challenge 6
-> Given a linear model:
+> ## チャレンジ６
+> 線形モデルを考えてみましょう：
 >
 > 
 > ~~~
@@ -1242,13 +1217,13 @@ xlist$data
 > ~~~
 > {: .language-r}
 >
-> Extract the residual degrees of freedom (hint: `attributes()` will help you)
+> 残差の自由度を抜き出してみましょう（ヒント： `attributes()` が役立つはずです）
 >
-> > ## Solution to challenge 6
+> > ## チャレンジ６の解答
 > >
 > > 
 > > ~~~
-> > attributes(mod) ## `df.residual` is one of the names of `mod`
+> > attributes(mod) ## `df.residual` は、`mod` の名前のひとつです
 > > ~~~
 > > {: .language-r}
 > > 
@@ -1260,13 +1235,13 @@ xlist$data
 {: .challenge}
 
 
-## Data frames
+## データフレーム
 
-Remember the data frames are lists underneath the hood, so similar rules
-apply. However they are also two dimensional objects:
+データフレームの中身は実はリストなので、同じようなルールがあてはまることを覚えておきましょう。
+しかし、データフレームは２次元のオブジェクトでもあります。
 
-`[` with one argument will act the same way as for lists, where each list
-element corresponds to a column. The resulting object will be a data frame:
+1つの引数しかない `[` は、リストと同じような働きがあり、それぞれのリストの要素が列に対応します。
+その結果、返されるオブジェクトはデータフレームになります：
 
 
 ~~~
@@ -1287,7 +1262,7 @@ head(gapminder[3])
 ~~~
 {: .output}
 
-Similarly, `[[` will act to extract *a single column*:
+同様に、 `[[` は、 *単一の列* を抜き出す働きをするものです：
 
 
 ~~~
@@ -1302,7 +1277,7 @@ head(gapminder[["lifeExp"]])
 ~~~
 {: .output}
 
-And `$` provides a convenient shorthand to extract columns by name:
+そして `$` は、簡単に列名で列を抽出できるものです：
 
 
 ~~~
@@ -1317,7 +1292,7 @@ head(gapminder$year)
 ~~~
 {: .output}
 
-With two arguments, `[` behaves the same way as for matrices:
+２つの引数を使えば、 `[` は、行列と同じような働きをします：
 
 
 ~~~
@@ -1335,8 +1310,8 @@ gapminder[1:3,]
 ~~~
 {: .output}
 
-If we subset a single row, the result will be a data frame (because
-the elements are mixed types):
+もし、１つの行を部分集合する場合、結果はデータフレームになります
+（理由は、要素には色々なデータ型が混ざっているからです）：
 
 
 ~~~
@@ -1352,14 +1327,14 @@ gapminder[3,]
 ~~~
 {: .output}
 
-But for a single column the result will be a vector (this can
-be changed with the third argument, `drop = FALSE`).
+しかし、１つの行についての結果は、ベクトルになります
+（これは、３番目の引数を `drop = FALSE` とすれば変えられます)。
 
-> ## Challenge 7
+> ## チャレンジ７
 >
-> Fix each of the following common data frame subsetting errors:
+> 以下の一般的なデータフレームの部分集合を作る際のエラーを修正しましょう：
 >
-> 1. Extract observations collected for the year 1957
+> 1. 1957年に集められた標本を抜き出す
 >
 >    
 >    ~~~
@@ -1367,7 +1342,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    {: .language-r}
 >
-> 2. Extract all columns except 1 through to 4
+> 2. 1から4を除く全ての列を抜き出す
 >
 >    
 >    ~~~
@@ -1375,7 +1350,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    {: .language-r}
 >
-> 3. Extract the rows where the life expectancy is longer the 80 years
+> 3. 平均余命が80歳以上の行を抜き出す
 >
 >    
 >    ~~~
@@ -1383,8 +1358,8 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    {: .language-r}
 >
-> 4. Extract the first row, and the fourth and fifth columns
->   (`lifeExp` and `gdpPercap`).
+> 4. 最初の行の4番目と5番目の列を抜き出す
+>   (`lifeExp` と `gdpPercap`).
 >
 >    
 >    ~~~
@@ -1392,8 +1367,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    {: .language-r}
 >
-> 5. Advanced: extract rows that contain information for the years 2002
->    and 2007
+> 5. 上級：2002年と2007年の情報を含む行を抜き出す
 >
 >    
 >    ~~~
@@ -1401,11 +1375,13 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    {: .language-r}
 >
-> > ## Solution to challenge 7
+> > ## チャレンジ７の解答
 > >
-> > Fix each of the following common data frame subsetting errors:
+> > 以下の一般的なデータフレームの部分集合を作る際のエラーを修正しましょう：
+
 > >
-> > 1. Extract observations collected for the year 1957
+> > 1. 1957年に集められた標本を抜き出す
+
 > >
 > >    
 > >    ~~~
@@ -1414,7 +1390,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    ~~~
 > >    {: .language-r}
 > >
-> > 2. Extract all columns except 1 through to 4
+> > 2. 1から4を除く全ての列を抜き出す
 > >
 > >    
 > >    ~~~
@@ -1423,7 +1399,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    ~~~
 > >    {: .language-r}
 > >
-> > 3. Extract the rows where the life expectancy is longer the 80 years
+> > 3. 平均余命が80歳以上の行を抜き出す
 > >
 > >    
 > >    ~~~
@@ -1432,8 +1408,8 @@ be changed with the third argument, `drop = FALSE`).
 > >    ~~~
 > >    {: .language-r}
 > >
-> > 4. Extract the first row, and the fourth and fifth columns
-> >   (`lifeExp` and `gdpPercap`).
+> > 4. 最初の行の4番目と5番目の列を抜き出す
+> >   (`lifeExp` と `gdpPercap`).
 > >
 > >    
 > >    ~~~
@@ -1442,8 +1418,7 @@ be changed with the third argument, `drop = FALSE`).
 > >    ~~~
 > >    {: .language-r}
 > >
-> > 5. Advanced: extract rows that contain information for the years 2002
-> >    and 2007
+> > 5. 上級：2002年と2007年の情報を含む行を抜き出す
 > >
 > >     
 > >     ~~~
@@ -1455,17 +1430,17 @@ be changed with the third argument, `drop = FALSE`).
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 8
+> ## チャレンジ８
 >
-> 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
+> 1. なぜ、 `gapminder[1:20]` は、エラーを返すのでしょうか？ `gapminder[1:20, ]` とどう違うのでしょう？
 >
 >
-> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
-> and 19 through 23. You can do this in one or two steps.
+> 2. 新しく `gapminder_small` という、1から9の行だけを含む `data.frame` を作ってください。
+> これは、１つまたは２つの手順でできます。
 >
-> > ## Solution to challenge 8
+> > ## チャレンジ８の解答
 > >
-> > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
+> > 1.  `gapminder` は、データフレームなので、２つの次元の部分集合を作る必要があります。 `gapminder[1:20, ]` は、最初から20番目の行までについて全ての列を引き出します。
 > >
 > > 2. 
 > >

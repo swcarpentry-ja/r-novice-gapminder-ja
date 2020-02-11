@@ -4,9 +4,12 @@
 再現可能な科学的分析のためのR
 ======================================
 
-An introduction to R for non-programmers using the [Gapminder][gapminder] data.
-Please see <https://swcarpentry.github.io/r-novice-gapminder> for a rendered version of this material,
-[the lesson template documentation][lesson-example]
+[Gapminder] [gapminder]データを使用している非プログラマー向けのR入門。
+この資料のレンダリング版についてはhttps://swcarpentry.github.io/r-novice-gapminder、資料の書式設定、構築、提出に関する手順についてはレッスンテンプレートのマニュアルを参照してください。 役に立つコマンド。
+
+
+この資料のレンダリング版については、<https://swcarpentry.github.io/r-novice-gapminder>を参照してください。.
+[レッスンテンプレートのドキュメント][lesson-example]
 for instructions on formatting, building, and submitting material,
 or run `make` in this directory for a list of helpful commands.
 
@@ -32,10 +35,21 @@ language R, and not on statistical analysis.
 
 Maintainers:
 
-* [Full Name][GitHubUser]
-* [Full Name][GitHubUser]
-* [Full Name][GitHubUser]
-* [Naupaka Zimmerman][zimmerman_naupaka]
+* [Maki Arakaki][rkkmk]
+* [Joel Nitta][joelnitta]
+* [Riku Takei][rikutakei]
+* [Tom Kelly][TomKellyGenetics]
+
+Translators:
+
+* [Dai Saito][DaichiSaitoAF]
+* [Atsushi Yasumoto][atusy]
+
+Contributors:
+
+* [Manabu Ishii][manabuishii]
+* [Kozo Nishida][kozo2]
+* [Satoshi Yoshida][megane0-0]
 
 [gapminder]: http://www.gapminder.org/
 [lesson-example]: https://carpentries.github.io/lesson-example
