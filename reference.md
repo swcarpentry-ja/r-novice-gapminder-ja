@@ -192,19 +192,19 @@ behaviour of R).
 - `any()` はベクトルの要素の中に一つでも `TRUE` があれば `TRUE` を返します。
 - `all()` はベクトルの要素が*全て* `TRUE` であれば `TRUE` を返します。
 
-## [Functions explained]({{ page.root }}/10-functions/)
+## [関数について]({{ page.root }}/10-functions/)
 
   - `?"function"`
-  - Put code whose parameters change frequently in a function, then call it with
-    different parameter values to customize its behavior.
-  - The last line of a function is returned, or you can use `return` explicitly
-  - Any code written in the body of the function will preferably look for variables defined inside the function.
-  - Document Why, then What, then lastly How (if the code isn't self explanatory)
+  - 何度もパラメータを変えながら実行するコードを関数にし、
+    作った関数をパラメータの値を変えることで挙動を変更しながら呼び出しましょう。
+  - 関数の最終行か、明示的に `return` を用いた部分が返り値になります。
+  - 関数の本文中に記述したコードはいずれも、関数内で定義された変数から探し始めます。
+  - コードの内容が自明ではない時は、ドキュメントに「なぜ」、次に「何」、そして最後に「どう」を記述しましょう。
 
-## [Writing data]({{ page.root }}/11-writing-data/)
+## [データの出力]({{ page.root }}/11-writing-data/)
 
- - `write.table` to write out objects in regular format
- - set `quote=FALSE` so that text isn't wrapped in `"` marks
+ - `write.table` を使ってオブジェクトを一般的な形式に出力しましょう。 unordered lis: r-novice-gapminder/reference.md:20sgid " - set `quote=FALSE` so that text isn't wrapped in `"` markssgstr " - `quote=FALSE` を指定して文字列が引用符に囲われないようにしましょう。
+
 
 ## [Split-apply-combine]({{ page.root }}/12-plyr/)
 

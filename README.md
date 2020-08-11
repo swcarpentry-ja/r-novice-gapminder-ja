@@ -35,21 +35,10 @@ language R, and not on statistical analysis.
 
 Maintainers:
 
-* [Maki Arakaki][rkkmk]
-* [Joel Nitta][joelnitta]
-* [Riku Takei][rikutakei]
-* [Tom Kelly][TomKellyGenetics]
-
-Translators:
-
-* [Dai Saito][DaichiSaitoAF]
-* [Atsushi Yasumoto][atusy]
-
-Contributors:
-
-* [Manabu Ishii][manabuishii]
-* [Kozo Nishida][kozo2]
-* [Satoshi Yoshida][megane0-0]
+* [Full Name][GitHubUser]
+* [Full Name][GitHubUser]
+* [Full Name][GitHubUser]
+* [Naupaka Zimmerman][zimmerman_naupaka]
 
 [gapminder]: http://www.gapminder.org/
 [lesson-example]: https://carpentries.github.io/lesson-example

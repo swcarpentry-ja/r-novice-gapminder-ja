@@ -22,8 +22,7 @@ additional arguments so we could filter by `year` and `country`:
 
 
 ~~~
-# Takes a dataset and multiplies the population column
-# with the GDP per capita column.
+# データセットを受け取り、人口の列と一人あたりのGDPの列をかけます。
 calcGDP <- function(dat, year=NULL, country=NULL) {
   if(!is.null(year)) {
     dat <- dat[dat$year %in% year, ]
