@@ -21,10 +21,10 @@ source: Rmd
 
 
 
-Manipulation of dataframes means many things to many researchers, we often
-select certain observations (rows) or variables (columns), we often group the
-data by a certain variable(s), or we even calculate summary statistics. We can
-do these operations using the normal base R operations:
+多くの研究者にとって、データフレームの操作は、多くのことを意味します。
+よくあるのは、特定の観測値（行）もしくは変数（列）の選択、 特定の変数でのデータのグループ化、
+更には要約する統計値の計算です。
+これらは、普通のRの基本操作で実行できます：
 
 
 ~~~
@@ -67,20 +67,20 @@ mean(gapminder[gapminder$continent == "Asia", "gdpPercap"])
 ~~~
 {: .output}
 
-But this isn't very *nice* because there is a fair bit of repetition. Repeating
-yourself will cost you time, both now and later, and potentially introduce some
-nasty bugs.
+でも、これはあまり*おススメ*ではありません。繰り返しがかなりあるからです。
+繰り返し作業は、時間を食います。そして、嫌なバグを起こる原因にもなりえます。
 
-## The `dplyr` package
+## `dplyr` パッケージ
 
-Luckily, the [`dplyr`](https://cran.r-project.org/web/packages/dplyr/dplyr.pdf)
-package provides a number of very useful functions for manipulating dataframes
-in a way that will reduce the above repetition, reduce the probability of making
-errors, and probably even save you some typing. As an added bonus, you might
-even find the `dplyr` grammar easier to read.
+嬉しいことに、[`dplyr`](https://cran.r-project.org/web/packages/dplyr/dplyr.pdf)
+パッケージには、データフレーム操作に非常に役立つ関数がいくつもあります。
+それを使うと、先ほどみたような繰り返しを減らし、エラーを起こす確率を減らし、
+タイピングする必要性さえも恐らく減らせます。
+更には、`dplyr` の書き方は、とても分かりやすいかもしれません。
 
-Here we're going to cover 6 of the most commonly used functions as well as using
-pipes (`%>%`) to combine them.
+ここでは、特によく使われる６つの関数と、
+それらを組み合わせるためのパイプ（`%>%`）を紹介します。
+.
 
 1. `select()`
 2. `filter()`
@@ -88,7 +88,7 @@ pipes (`%>%`) to combine them.
 4. `summarize()`
 5. `mutate()`
 
-If you have have not installed this package earlier, please do so:
+もし、このパッケージをまだインストールしていないようでしたら、ここでしておきましょう：
 
 
 ~~~
@@ -96,7 +96,7 @@ install.packages('dplyr')
 ~~~
 {: .language-r}
 
-Now let's load the package:
+パッケージをロードしましょう：
 
 
 ~~~
@@ -104,11 +104,11 @@ library("dplyr")
 ~~~
 {: .language-r}
 
-## Using select()
+## select() の使用
 
-If, for example, we wanted to move forward with only a few of the variables in
-our dataframe we could use the `select()` function. This will keep only the
-variables you select.
+例えば、 データフレームにある、いくつかの変数だけを使って進めたい場合、
+使えるかもしれないのは、`select()` 関数です。
+これを使えば、選択した変数だけをキープすることができます。
 
 
 ~~~
@@ -118,11 +118,11 @@ year_country_gdp <- select(gapminder,year,country,gdpPercap)
 
 ![](../fig/13-dplyr-fig1.png)
 
-If we open up `year_country_gdp` we'll see that it only contains the year,
-country and gdpPercap. Above we used 'normal' grammar, but the strengths of
-`dplyr` lie in combining several functions using pipes. Since the pipes grammar
-is unlike anything we've seen in R before, let's repeat what we've done above
-using pipes.
+もし `year_country_gdp` を開いたら、year、country 及び gdpPercap しかないでしょう。
+これまでは、 '普通の' 書き方を使いましたが、`dplyr` の強みは、複数の関数を
+パイプを使って、組み合わせられることです。
+パイプの書き方は、これまでRで見てきたものとは、
+全く違いますので、上記でしたことをパイプを使って、やってみましょう。
 
 
 ~~~
@@ -130,18 +130,16 @@ year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
 ~~~
 {: .language-r}
 
-To help you understand why we wrote that in that way, let's walk through it step
-by step. First we summon the gapminder dataframe and pass it on, using the pipe
-symbol `%>%`, to the next step, which is the `select()` function. In this case
-we don't specify which data object we use in the `select()` function since in
-gets that from the previous pipe. **Fun Fact**: There is a good chance you have
-encountered pipes before in the shell. In R, a pipe symbol is `%>%` while in the
-shell it is `|` but the concept is the same!
+こう書いた理由を理解しやすくするために、ひとつずつ見ていきましょう。
+始めに、gapminder データフレームを呼び出し、パイプの記号`%>%` を使って、
+次の `select()` 関数を使うステップに引き渡します。どのデータオブジェクトを
+`select()` 関数で使うかについては、前のパイプから分かるため、ここでは指定しません。
+**面白い事実**：シェルで、パイプに既に出会っている可能性が高いはずです。
+Rでは、パイプの記号は `%>%` で、シェルでは、 `|` ですが、コンセプトは同じです。
 
-## Using filter()
+## filter() の使用
 
-If we now wanted to move forward with the above, but only with European
-countries, we can combine `select` and `filter`
+欧州のみで、上記を進めたいとしたら、 `select` と `filter` を組み合わせましょう。
 
 
 ~~~
@@ -153,12 +151,11 @@ year_country_gdp_euro <- gapminder %>%
 
 > ## チャレンジ１
 >
-> Write a single command (which can span multiple lines and includes pipes) that
-> will produce a dataframe that has the African values for `lifeExp`, `country`
-> and `year`, but not for other Continents.  How many rows does your dataframe
-> have and why?
+> アフリカの`lifeExp`、 `country` 及び `year` を持ち、他の大陸を含まないデータフレームを
+> 作るコマンドをひとつ書いてみましょう（複数の行になっても、パイプを使っても大丈夫です）
+> データフレームには、何行ありますか。なぜそうなるのでしょうか。
 >
-> > ## Solution to Challenge 1
+> > ## チャレンジ１の解答
 > >
 > >~~~
 > >year_country_lifeExp_Africa <- gapminder %>%
@@ -169,20 +166,18 @@ year_country_gdp_euro <- gapminder %>%
 > {: .solution}
 {: .challenge}
 
-As with last time, first we pass the gapminder dataframe to the `filter()`
-function, then we pass the filtered version of the gapminder dataframe to the
-`select()` function. **Note:** The order of operations is very important in this
-case. If we used 'select' first, filter would not be able to find the variable
-continent since we would have removed it in the previous step.
+以前行ったように、gapminder データフレームを `filter()` 関数に引き渡し、
+フィルターされた バージョンのgapminder データフレームを、 `select()` 関数に引き渡します。
+**注意：** ここでは、操作手順がとても重要です。
+まず 'select' を使うと、その前のステップで、大陸の変数が削除されているため、
+filter で大陸の変数を見つけることができないことでしょう。
 
-## Using group_by() and summarize()
+## group_by() と summarize() の使用
 
-Now, we were supposed to be reducing the error prone repetitiveness of what can
-be done with base R, but up to now we haven't done that since we would have to
-repeat the above for each continent. Instead of `filter()`, which will only pass
-observations that meet your criteria (in the above: `continent=="Europe"`), we
-can use `group_by()`, which will essentially use every unique criteria that you
-could have used in filter.
+ここでは、Rの基本的な機能を用いたエラーが起こりやすい繰り返し作業を減らすはずでした。
+でも、まだそれが達成できていません。上記では、それぞれの大陸ごとに同じことを繰り返さなければならないからです。
+繰り返しを無くすために、（上記の `continent=="Europe"` のように）条件にあったデータのみを引き渡す `filter()` の代わりに、
+filterでも使える、それぞれの一意の条件を元に一気にデータを分ける `group_by()` を使うこともできます。
 
 
 ~~~
@@ -236,22 +231,20 @@ Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':\t1704 obs. of  6 variabl
   ..- attr(*, "drop")= logi TRUE
 ~~~
 {: .output}
-You will notice that the structure of the dataframe where we used `group_by()`
-(`grouped_df`) is not the same as the original `gapminder` (`data.frame`). A
-`grouped_df` can be thought of as a `list` where each item in the `list`is a
-`data.frame` which contains only the rows that correspond to the a particular
-value `continent` (at least in the example above).
+`group_by()` （`grouped_df`）で用いたデータフレームのデータ構造は、もともとの `gapminder` （`data.frame`）とは異なることに気づいたことでしょう。
+`grouped_df` は、 `list` のようなものです。その `list` にある各項目は、
+（少なくとも上記の例では）特定の `continent` の値が対応する列のみを含む `data.frame` 
+になります。
 
 ![](../fig/13-dplyr-fig2.png)
 
-## Using summarize()
+## summarize() の使用
 
-The above was a bit on the uneventful side but `group_by()` is much more
-exciting in conjunction with `summarize()`. This will allow us to create new
-variable(s) by using functions that repeat for each of the continent-specific
-data frames. That is to say, using the `group_by()` function, we split our
-original dataframe into multiple pieces, then we can run functions
-(e.g. `mean()` or `sd()`) within `summarize()`.
+上記は、少し物足りないかもしれませんが、`group_by()` は、`summarize()` と共に使えば
+本当にすばらしいのです。それぞれの大陸のデータフレームごとに繰り返す関数を使って、
+新たな変数を作ることができます。
+つまり、 `group_by()` 関数を使って、もともとのデータフレームを、いくつかのデータに分け、
+`summarize()` の中で、関数（たとえば `mean()` や `sd()`）を実行することができるのです。
 
 
 ~~~
@@ -275,16 +268,16 @@ continent mean_gdpPercap
 ~~~
 {: .language-r}
 
-That allowed us to calculate the mean gdpPercap for each continent, but it gets
-even better.
+これにより、それぞれの大陸の平均gdpPercapを計算することができますが、
+更に、すばらしいことがあるのです。
 
 > ## チャレンジ２
 >
 >
-> Calculate the average life expectancy per country. Which has the longest average life
-> expectancy and which has the shortest average life expectancy?
+> 国別平均余命を計算しましょう。平均余命が、一番長い国と一番短い国は、
+> それぞれどこでしょうか。
 >
-> > ## Solution to Challenge 2
+> > ## チャレンジ２の解答
 > >
 > >~~~
 > >lifeExp_bycountry <- gapminder %>%
@@ -305,11 +298,11 @@ even better.
 > >2 Sierra Leone         36.8
 > >~~~
 > >{: .output}
-> Another way to do this is to use the `dplyr` function `arrange()`, which
-> arranges the rows in a data frame according to the order of one or more
-> variables from the data frame.  It has similar syntax to other functions from
-> the `dplyr` package. You can use `desc()` inside `arrange()` to sort in
-> descending order.
+> もうひとつの方法は、 `dplyr` の関数 `arrange()` を使うことです。
+> これは、データフレームのひとつ又は複数の変数の順序に従って、
+> データフレームの列を配置するものです。 書き方は、`dplyr` パッケージの
+> 他の関数と似ています。降順で並べたいときは、 `arrange()` の中に、
+> `desc()` を使えばよいのです。
 > >
 > >~~~
 > >lifeExp_bycountry %>%
@@ -349,7 +342,8 @@ even better.
 > {: .solution}
 {: .challenge}
 
-The function `group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`.
+ `group_by()` の関数では、複数の変数でグループ化するこもできます。
+ `year` と `continent` でグループ分けしてみましょう。
 
 
 
@@ -360,7 +354,7 @@ gdp_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .language-r}
 
-That is already quite powerful, but it gets even better! You're not limited to defining 1 new variable in `summarize()`.
+これでも、かなり役に立ちますが、更にすごいことに、`summarize()` の中で新しく定義できる変数は、１つに限らないのです。
 
 
 ~~~
@@ -373,15 +367,14 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .language-r}
 
-## count() and n()
+## count() 及び n()
 
-A very common operation is to count the number of observations for each
-group. The `dplyr` package comes with two related functions that help with this.
+よくありがちな操作は、各グループの観測値の数を数えることですが、
+'dplyr' パッケージには、これに役立つ関数が２つあります。
 
-For instance, if we wanted to check the number of countries included in the
-dataset for the year 2002, we can use the `count()` function. It takes the name
-of one or more columns that contain the groups we are interested in, and we can
-optionally sort the results in descending order by adding `sort=TRUE`:
+例えば、2002年のデータセットにある国の数を確認したい場合、 `count()` 関数が使えます。
+興味のあるグループのひとつかいくつかの行の名前を取り、
+ `sort=TRUE` を加えることで、結果を降順に並べることもできます：
 
 
 ~~~
@@ -405,9 +398,8 @@ gapminder %>%
 ~~~
 {: .output}
 
-If we need to use the number of observations in calculations, the `n()` function
-is useful. For instance, if we wanted to get the standard error of the life
-expectency per continent:
+演算の際の観測値の数が必要な場合 `n()` 関数が使えます。
+例えば、大陸別平均余命の標準誤差を得たいとします：
 
 
 ~~~
@@ -431,7 +423,7 @@ gapminder %>%
 ~~~
 {: .output}
 
-You can also chain together several summary operations; in this case calculating the `minimum`, `maximum`, `mean` and `se` of each continent's per-country life-expectancy:
+いくつかの要約計算を、つなぎ合わせることもできます。つまり、ここでは各大陸の国別平均余命の `minimum` 、 `maximum` 、 `mean` 及び `se` となります：
 
 
 ~~~
@@ -459,9 +451,9 @@ gapminder %>%
 ~~~
 {: .output}
 
-## Using mutate()
+## mutate() の使用
 
-We can also create new variables prior to (or even after) summarizing information using `mutate()`.
+情報を要約する前に（もしくは後にでも）、 `mutate()` を使えば、新しい変数を作ることができます。
 
 
 ~~~
@@ -477,12 +469,14 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .language-r}
 
-## Connect mutate with logical filtering: ifelse
+## 論理フィルター ifelse とmutate の併用
 
-When creating new variables, we can hook this with a logical condition. A simple combination of
-`mutate()` and `ifelse()` facilitates filtering right where it is needed: in the moment of creating something new.
-This easy-to-read statement is a fast and powerful way of discarding certain data (even though the overall dimension
-of the data frame will not change) or for updating values depending on this given condition.
+新しい変数を作る時、論理条件を付けることができます。
+似たような組み合わせの `mutate()` と `ifelse()` は、まさに必要な場面、つまり
+新しいものを作る時に、フィルターすることができます。
+この簡単に読めるコードが、（データフレーム全体の次元を変えずに）あるデータを
+排除するための早くて役に立つ方法であり、
+与えられた条件によって値を更新する方法なのです。
 
 
 ~~~
@@ -508,11 +502,11 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
 ~~~
 {: .language-r}
 
-## Combining `dplyr` and `ggplot2`
+## `dplyr` と `ggplot2` の併用
 
-In the plotting lesson we looked at how to make a multi-panel figure by adding
-a layer of facet panels using `ggplot2`. Here is the code we used (with some
-extra comments):
+プロットのレッスンでは、 `ggplot2` を使って、ファセットパネルの層を加えることで、
+複数パネルの図を示す方法を見ました。
+以下が、（いくつかコメントを足してありますが）使用したコードです：
 
 
 ~~~
@@ -528,13 +522,13 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
 
 <img src="../fig/rmd-13-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
-This code makes the right plot but it also creates some variables (`starts.with`
-and `az.countries`) that we might not have any other uses for. Just as we used
-`%>%` to pipe data along a chain of `dplyr` functions we can use it to pass data
-to `ggplot()`. Because `%>%` replaces the first argument in a function we don't
-need to specify the `data =` argument in the `ggplot()` function. By combining
-`dplyr` and `ggplot2` functions we can make the same figure without creating any
-new variables or modifying the data.
+このコードは、正しいプロットを作りますが、他に使い道のない、変数（`starts.with`
+及び `az.countries`）も作ります。 `dplyr` 関数のチェーンで、 `%>%` を使って、
+データをパイプしたように、 `ggplot()` へデータを引き渡すこともできます。
+なぜならば `%>%` は、関数の最初の引数を置き換えるため、
+ `ggplot()` 関数の中の、 `data =` 因数を指定する必要がありません。
+ `dplyr` と `ggplot2` 関数を組み合わせることで、同じ図を、新しい変数を作ったり、
+データを修正することなく作成できます。
 
 
 ~~~
@@ -552,8 +546,8 @@ gapminder %>%
 
 <img src="../fig/rmd-13-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
 
-Using `dplyr` functions also helps us simplify things, for example we could
-combine the first two steps:
+ `dplyr` 関数を使うことで、物事が簡単になります。例えば、
+最初の２つの段階を組み合わせることができます：
 
 
 ~~~
@@ -569,14 +563,14 @@ gapminder %>%
 
 <img src="../fig/rmd-13-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
 
-> ## Advanced Challenge
+> ## 上級チャレンジ
 >
-> Calculate the average life expectancy in 2002 of 2 randomly selected countries
-> for each continent. Then arrange the continent names in reverse order.
-> **Hint:** Use the `dplyr` functions `arrange()` and `sample_n()`, they have
-> similar syntax to other dplyr functions.
+> 各大陸から無作為に選ばれた２つの国の2002年の平均余命を計算し、
+> 大陸名を、逆の順番に並べましょう。
+> **ヒント：** `dplyr` 関数 `arrange()` 及び `sample_n()` を使いましょう。
+> 書き方は、他の dplyr 関数と同じです。
 >
-> > ## Solution to Advanced Challenge
+> > ## 上級チャレンジの解答
 > >
 > >~~~
 > >lifeExp_2countries_bycontinents <- gapminder %>%
@@ -590,7 +584,7 @@ gapminder %>%
 > {: .solution}
 {: .challenge}
 
-## Other great resources
+## その他役に立つ資料
 
 * [R for Data Science](http://r4ds.had.co.nz/)
 * [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)

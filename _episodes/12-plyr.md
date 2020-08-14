@@ -15,10 +15,10 @@ source: Rmd
 
 
 
-Previously we looked at how you can use functions to simplify your code.
-We defined the `calcGDP` function, which takes the gapminder dataset,
-and multiplies the population and GDP per capita column. We also defined
-additional arguments so we could filter by `year` and `country`:
+ここまでに、関数がコードをシンプルにするために使えるということをお伝えしました。
+gapminder データセットを使って、人口の列と１人当たりのGDP(国内総生産)の列を掛ける
+関数 `calcGDP` を定義し、更に、
+`year` と `country` でフィルターできる引数を追加で、定義しましたよね。
 
 
 ~~~
@@ -38,12 +38,11 @@ calcGDP <- function(dat, year=NULL, country=NULL) {
 ~~~
 {: .language-r}
 
-A common task you'll encounter when working with data, is that you'll want to
-run calculations on different groups within the data. In the above, we were
-simply calculating the GDP by multiplying two columns together. But what if
-we wanted to calculated the mean GDP per continent?
+データを使うときに、データにあるグループごとに計算を実行してみたいと思うことが、よくあります。
+先ほどの例では、単純に二つの列を掛け合わせることでGDPを計算しました。
+では、大陸ごとに平均GDPを計算したいときは、どうすればよいでしょうか。
 
-We could run `calcGDP` and then take the mean of each continent:
+`calcGDP` を実行してから、それぞれの大陸の平均をとることもできます：
 
 
 ~~~
@@ -87,31 +86,30 @@ mean(withGDP[withGDP$continent == "Asia", "gdp"])
 ~~~
 {: .output}
 
-But this isn't very *nice*. Yes, by using a function, you have reduced a
-substantial amount of repetition. That **is** nice. But there is still
-repetition. Repeating yourself will cost you time, both now and later, and
-potentially introduce some nasty bugs.
+でも、これはあまり*おススメ*ではありません。そうです。ある関数を使えば、
+いくつもの繰り返し作業を減らすことができます。それ **は**、おススメです。
+それでも、繰り返し作業はあります。繰り返し作業は、その時点だけでなく
+その後も、時間を食います。そして、嫌なバグが起こる原因にもなりえます。
 
-We could write a new function that is flexible like `calcGDP`, but this
-also takes a substantial amount of effort and testing to get right.
+`calcGDP` のような、新しい関数を書くこともできます。
+でも、ちゃんとしたものを作るには、かなりの労力と確認が必要になるでしょう。
 
-The abstract problem we're encountering here is know as "split-apply-combine":
+ここで直面している抽象的な問題は、 「split-apply-combine（分けてー適用してーまとめる）」ものとしてよく知られています：
 
 ![Split apply combine](../fig/12-plyr-fig1.png)
 
-We want to *split* our data into groups, in this case continents, *apply*
-some calculations on that group, then optionally *combine* the results
-together afterwards.
+データを（この例では大陸別に）グループ *分け* し、そのグループへある計算を
+ *適用*し、できればその後に、結果を *まとめ* たいのです。
 
-## The `plyr` package
+## `plyr` パッケージ
 
-For those of you who have used R before, you might be familiar with the
-`apply` family of functions. While R's built in functions do work, we're
-going to introduce you to another method for solving the "split-apply-combine"
-problem. The [plyr](http://had.co.nz/plyr/) package provides a set of
-functions that we find more user friendly for solving this problem.
+Rを使ったことがある人なら、`apply`系の関数は、既にご存知かもしれません。
+Rに元々ある関数でもよいのですが、この「split-apply-combine」問題を解決する
+他の方法を紹介しましょう。
+[plyr](http://had.co.nz/plyr/) パッケージには、よりお手軽に、
+この問題を解決できる関数たちがあります。
 
-We installed this package in an earlier challenge. Let's load it now:
+このパッケージを、以前のチャレンジで、インストールしましたので、ここでロードしてみましょう：
 
 
 ~~~
@@ -119,32 +117,29 @@ library("plyr")
 ~~~
 {: .language-r}
 
-Plyr has functions for operating on `lists`, `data.frames` and `arrays`
-(matrices, or n-dimensional vectors). Each function performs:
+Plyrには、`lists（リスト）`、`data.frames（データフレーム）` 及び `arrays（列）`（行列またはn-次元のベクトル）
+に実行できる関数があります。それぞれの関数は以下を実行します：
 
-1. A **split**ting operation
-2. **Apply** a function on each split in turn.
-3. Re**combine** output data as a single data object.
+1. **分ける** 作業
+2. 分割したそれぞれへの関数の **適用**
+3. 出力データを再度ひとつのデータオブジェクトとして**まとめる**
 
-The functions are named based on the data structure they expect as input,
-and the data structure you want returned as output: [a]rray, [l]ist, or
-[d]ata.frame. The first letter corresponds to the input data structure,
-the second letter to the output data structure, and then the rest of the
-function is named "ply".
+関数は、入力されるだろうデータ構造と出力予定のデータ構造に基づき名付けられています。
+つまり、[a]rray、[l]ist、または[d]ata.frameのことです。最初の文字が、入力データ構造、
+次の文字が出力データ構造、そして、残りが「ply」と名付けられた関数です。
 
-This gives us 9 core functions **ply.  There are an additional three functions
-which will only perform the split and apply steps, and not any combine step.
-They're named by their input data type and represent null output by a `_` (see
-table)
+これが **plyの９つの中心的な関数です。加えて、分けて適用することだけで、まとめを実行しない
+関数が３つあります。それらは、入力データ型と出力データがないことを示す
+ `_` から名付けられています（表参照）。
 
-Note here that plyr's use of "array" is different to R's,
-an array in ply can include a vector or matrix.
+ここで、plyrの「array」の使用法は、Rの使用法と違うことに気をつけましょう。
+plyのarrayは、ベクトルや行列も含めます。
 
 ![Full apply suite](../fig/12-plyr-fig2.png)
 
 
-Each of the xxply functions (`daply`, `ddply`, `llply`, `laply`, ...) has the
-same structure and has 4 key features and structure:
+xxply関数（`daply` 、 `ddply` 、 `llply` 、 `laply`、などなど）は、
+同じ構造で、４つの重要な特徴と構造を持っています：
 
 
 ~~~
@@ -152,12 +147,12 @@ xxply(.data, .variables, .fun)
 ~~~
 {: .language-r}
 
-* The first letter of the function name gives the input type and the second gives the output type.
-* .data - gives the data object to be processed
-* .variables - identifies the splitting variables
-* .fun - gives the function to be called on each piece
+* 関数名の最初の文字が、入力型、次の文字が出力型を示します。
+* .data －処理されるデータオブジェクトを示します。
+* .variables－分割する変数を指定します。
+* .fun－それぞれに適用する関数を示します。
 
-Now we can quickly calculate the mean GDP per continent:
+それでは、大陸別の平均GDPを計算してみましょう：
 
 
 ~~~
@@ -181,29 +176,26 @@ ddply(
 ~~~
 {: .output}
 
-Let's walk through the previous code:
+このコードを、ひとつずつ見てみましょう：
 
-- The `ddply` function feeds in a `data.frame` (function starts with **d**) and
-returns another `data.frame` (2nd letter is a **d**) i
-- the first argument we gave was the data.frame we wanted to operate on: in this
-  case the gapminder data. We called `calcGDP` on it first so that it would have
-  the additional `gdp` column added to it.
-- The second argument indicated our split criteria: in this case the "continent"
-  column. Note that we gave the name of the column, not the values of the column like we had done previously with subsetting. Plyr takes care of these
-  implementation details for you.
-- The third argument is the function we want to apply to each grouping of the
-  data. We had to define our own short function here: each subset of the data
-  gets stored in `x`, the first argument of our function. This is an anonymous
-  function: we haven't defined it elsewhere, and it has no name. It only exists
-  in the scope of our call to `ddply`.
+- `ddply` 関数は、`data.frame` を使い（関数は、**d**から始まりますね）、
+もうひとつの`data.frame`を出力します（２番目の文字は、**d**ですね）
+- 最初の引数は、使いたいdata.frameでしたね。つまり、ここでは、
+gapminderデータです。そこに、`gdp`（国内総生産） の列を加えるために、まず `calcGDP` を使いましょう。
+- 次の引数は、分割基準を、つまり、ここでは「continent」（大陸）列です。
+   以前、分部集合に分けるときに使った値の名前ではなく、ここでは列の名前を使うことに気を付けましょう。Plyrが細かい実行上の詳細を、代わりに処理してくれますので。
+- ３番目の引数は、データのそれぞれのグループに当てはめる関数です。
+  ここで、自分で短い関数を定義しておかなければなりません。
+  データのそれぞれの部分集合が、その関数の最初の引数の`x` に保存されます。
+  これは、名前のない関数です。つまり、他のところで定義していないもので、名前がないものです。それは、 `ddply` が呼び出されている間だけ、存在します。
 
 > ## チャレンジ１
 >
-> Calculate the average life expectancy per continent. Which has the longest?
-> Which had the shortest?
+> 大陸別の平均余命を計算してみましょう。一番長いのはどこでしょうか。
+> 一番短いのはどこでしょうか。
 {: .challenge}
 
-What if we want a different type of output data structure?:
+他のデータ構造型での出力が良い場合は、どうすればよいでしょうか。
 
 
 ~~~
@@ -245,10 +237,10 @@ attr(,"split_labels")
 ~~~
 {: .output}
 
-We called the same function again, but changed the second letter to an `l`, so
-the output was returned as a list.
+また同じ関数を呼び出しましたが、２番目の文字を `l` に変えたので、
+出力されたのは、リストでした。
 
-We can specify multiple columns to group by:
+以下で、グループにまとめる列を指定します：
 
 
 ~~~
@@ -364,9 +356,8 @@ continent          1992         1997         2002         2007
 ~~~
 {: .output}
 
-You can use these functions in place of `for` loops (and its usually faster to
-do so).
-To replace a for loop, put the code that was in the body of the `for` loop inside an anonymous function.
+これらの関数は `for` ループの代わりに使えます（その方が、普通は早いです）。
+そうするには、`for` ループの本体の中にあったコードを名無し関数に入れましょう。
 
 
 ~~~
@@ -395,32 +386,31 @@ d_ply(
 ~~~
 {: .output}
 
-> ## Tip: printing numbers
+> ## ヒント：数を出力する
 >
-> The `format` function can be used to make numeric
-> values "pretty" for printing out in messages.
+> `format` 関数を使えば、数値をメッセージの中で「いい感じ」に
+> 出力できます。
 {: .callout}
 
 
 > ## チャレンジ２
 >
-> Calculate the average life expectancy per continent and year. Which had the
-> longest and shortest in 2007? Which had the greatest change in between 1952
-> and 2007?
+> 年次の大陸別平均余命を計算しましょう。2007年に
+> 一番長かったのは、短かったのは、どこでしょうか。
+> 1952年から2007にかけて変化が一番大きかったのはどこでしょうか。
 {: .challenge}
 
 
-> ## Advanced Challenge
+> ## 上級チャレンジ
 >
-> Calculate the difference in mean life expectancy between
-> the years 1952 and 2007 from the output of challenge 2
-> using one of the `plyr` functions.
+> `plyr` 関数のひとつを使って、チャレンジ２の出力から、
+> 2007年と1952年の平均余命の差を計算しましょう。
 {: .challenge}
 
-> ## Alternate Challenge if class seems lost
+> ## チャレンジの別バージョン（クラスがなくなっていた場合）
 >
-> Without running them, which of the following will calculate the average
-> life expectancy per continent:
+> 実行せずに、以下の中から、大陸別の平均余命を計算するものを選んでみましょう。
+> ：
 >
 > 1.
 > 

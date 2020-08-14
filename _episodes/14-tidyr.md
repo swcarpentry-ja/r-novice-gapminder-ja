@@ -17,36 +17,34 @@ source: Rmd
 
 
 
-Researchers often want to manipulate their data from the 'wide' to the 'long'
-format, or vice-versa. The 'long' format is where:
+研究者には「横長」データを「縦長」データに（又はその逆を）したいと
+思うことがよくあります。 「縦長」形式とは：
 
- - each column is a variable
- - each row is an observation
+ - 各列が変数
+ - 各行が観測値
 
-In the 'long' format, you usually have 1 column for the observed variable and
-the other columns are ID variables.
+「縦長」形式では、普通、観測値は１列で、残りの列はIDの変数になります。
 
 
-For the 'wide' format each row is often a site/subject/patient and you have
-multiple observation variables containing the same type of data. These can be
-either repeated observations over time, or observation of multiple variables (or
-a mix of both). You may find data input may be simpler or some other
-applications may prefer the 'wide' format. However, many of `R`'s functions have
-been designed assuming you have 'long' format data. This tutorial will help you
-efficiently transform your data regardless of original format.
+「横長」形式は、それぞれの行には、場所／主題／患者があり、同じようなデータ型の
+複数の観測変数があります。 時間を変えて繰り返し観測した値や、
+複数の観測変数（又は、その両方）が、これに該当します。
+データ入力がより単純と感じたり、「縦長」形式の方が良いという
+アプリケーションもあるでしょうが、「R」の関数の多くは、
+「縦長」形式データを前提として作られています。ここでは、
+元々の形式に関係なくデータを効率的に変換する方法を学びましょう。
 
 ![](../fig/14-tidyr-fig1.png)
 
-These data formats mainly affect readability. For humans, the wide format is
-often more intuitive since we can often see more of the data on the screen due
-to its shape. However, the long format is more machine readable and is closer
-to the formatting of databases. The ID variables in our dataframes are similar to
-the fields in a database and observed variables are like the database values.
+これらのデータ形式は、主に読みやすさに影響します。画面の形状上、より多くのデータが見られる
+横長形式を、人間は直感的に選好しやすいところですが、縦長形式の方が機械が読みやすく、
+データベースの形式に近いのです。データフレームにある ID 変数は、データベースにあるフィールドの
+ようなものであり、観測された変数はデータべースの値のようなものです。
 
-## Getting started
+## 手始めに
 
-First install the packages if you haven't already done so (you probably
-installed dplyr in the previous lesson):
+まず、パッケージをインストールしましょう、もしまだやっていなければですが
+（おそらく、前の dplyr のレッスンで、インストールしているかと思います）：
 
 
 ~~~
@@ -55,7 +53,7 @@ installed dplyr in the previous lesson):
 ~~~
 {: .language-r}
 
-Load the packages
+パーッケージをロードしましょう。
 
 
 ~~~
@@ -64,7 +62,7 @@ library("dplyr")
 ~~~
 {: .language-r}
 
-First, lets look at the structure of our original gapminder dataframe:
+始めに、そもそもの gapminder データフレームのデータ構造を見てみましょう：
 
 
 ~~~
@@ -87,48 +85,46 @@ str(gapminder)
 
 > ## チャレンジ１
 >
-> Is gapminder a purely long, purely wide, or some intermediate format?
+> gapminder は、横長のみ、縦長のみ、又はその中間の形式でしょうか。
 >
 >
-> > ## Solution to Challenge 1
+> > ## チャレンジ１の解答
 > >
-> > The original gapminder data.frame is in an intermediate format. It is not
-> > purely long since it had multiple observation variables
-> > (`pop`,`lifeExp`,`gdpPercap`).
+> > 元々の gapminder data.frame は、中間の形式です。
+> > 複数の観測変数（`pop`,`lifeExp`,`gdpPercap`）があるため、
+> > 縦長のみのデータとは言えません。
 > {: .solution}
 {: .challenge}
 
 
-Sometimes, as with the gapminder dataset, we have multiple types of observed
-data. It is somewhere in between the purely 'long' and 'wide' data formats. We
-have 3 "ID variables" (`continent`, `country`, `year`) and 3 "Observation
-variables" (`pop`,`lifeExp`,`gdpPercap`). I usually prefer my data in this
-intermediate format in most cases despite not having ALL observations in 1
-column given that all 3 observation variables have different units. There are
-few operations that would need us to stretch out this dataframe any longer
-(i.e. 4 ID variables and 1 Observation variable).
+ときどき gapminder データセットのように、観測データが複数の型の場合があります。
+これは「縦長」と「横長」のデータ形式の中間のようなものです。
+３つの「ID variables」（`continent`, `country`, `year`）と、３つの「観測変数」
+（`pop`,`lifeExp`,`gdpPercap`）がありますね。３つの観測変数が、全ての違う
+単位であり、全ての変数が１列になってはいませんが、個人的には、自分のデータを、
+この中間形式にしたいと思うことが多いです。このデータフレームをより縦に広げたい
+（つまり、４つの ID 変数と１観測変数にしたい）というときに使える操作は、
+ほとんどありません。
 
-While using many of the functions in R, which are often vector based, you
-usually do not want to do mathematical operations on values with different
-units. For example, using the purely long format, a single mean for all of the
-values of population, life expectancy, and GDP would not be meaningful since it
-would return the mean of values with 3 incompatible units. The solution is that
-we first manipulate the data either by grouping (see the lesson on `dplyr`), or
-we change the structure of the dataframe.  **Note:** Some plotting functions in
-R actually work better in the wide format data.
+一方で、R の関数の多くは、ベクトルに基づいているものがほとんどであり、ふつうは
+単位が異なる値に、数理的演算をすることは避けたいと思うでしょう。
+例えば、縦長の形式のみを使って、人口、平均余命及びGDPの値の全てを使って、
+ひとつ平均値を出しても、意味がないでしょう。３つの比較できない単位の値の平均と
+なるのですから。解決方法は、データをまずグループ化（`dplyr` のレッスンを参照)するか、
+データフレームの形式を変えることでしょう。  **注：** Rのプロット関数の中には、
+横長形式のデータの方がよいものもあります。
 
-## From wide to long format with gather()
+## gather() を使って、横長から縦長形式へ
 
-Until now, we've been using the nicely formatted original gapminder dataset, but
-'real' data (i.e. our own research data) will never be so well organized. Here
-let's start with the wide format version of the gapminder dataset.
+ここまでは、元々の gapminder データセットの形式を整えてきましたが、
+'本物の' データ（つまり、研究データ）が、ちゃんと整理されていることは
+ほとんどないでしょう。ここで、gapminderデータセットの横長形式から、始めてみましょう。
 
-> Download the wide version of the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv)
-and save it in your data folder.
+> 横長バージョンの gapminder データを [ここ](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv)からダウンロードしましょう。
+そしてフォルダーに保存します。
 
-We'll load the data file and look at it.  Note: we don't want our continent and
-country columns to be factors, so we use the stringsAsFactors argument for
-`read.csv()` to disable that.
+データファイルをロードして見てみましょう。  注：大陸と国の列は、因子型にはしたくありません。
+そこで、そうならないように、`read.csv()`に stringsAsFactors 引数を使いましょう。
 
 
 ~~~
@@ -184,9 +180,9 @@ str(gap_wide)
 
 ![](../fig/14-tidyr-fig2.png)
 
-The first step towards getting our nice intermediate data format is to first
-convert from the wide to the long format. The `tidyr` function `gather()` will
-'gather' your observation variables into a single variable.
+我々の目指す中間形式のデータに向かう最初のステップは、
+横長から縦長形式への変換です。 `tidyr` 関数の `gather()` を使えば、
+観測変数をひとつの変数に '集める（gather）' することができます。
 
 ![](../fig/14-tidyr-fig3.png)
 
@@ -210,18 +206,16 @@ str(gap_long)
 ~~~
 {: .output}
 
-Here we have used piping syntax which is similar to what we were doing in the
-previous lesson with dplyr. In fact, these are compatible and you can use a mix
-of tidyr and dplyr functions by piping them together
+ここでは、以前 dplyr のレッスンの中で行ったようなパイプの書き方を使いました。
+実は、tidyr と dplyr 関数は互換性があり、パイプで繋ぐことで、一緒に使うことが
+できるのです。
 
-Inside `gather()` we first name the new column for the new ID variable
-(`obstype_year`), the name for the new amalgamated observation variable
-(`obs_value`), then the names of the old observation variable. We could have
-typed out all the observation variables, but as in the `select()` function (see
-`dplyr` lesson), we can use the `starts_with()` argument to select all variables
-that starts with the desired character string. Gather also allows the alternative
-syntax of using the `-` symbol to identify which variables are not to be
-gathered (i.e. ID variables)
+始めに、新しいID変数（`obstype_year`）のための新しい列、新しくまとめた
+観測変数（`obs_value`）、及び古い観測変数を `gather()` の中で名付けましょう。 
+全ての観測変数をタイプすることもできますが、 `select()` 関数（`dplyr` レッスン参照）
+でしたように、引数 `starts_with()` で目的の文字列で始まる全ての変数を選びましょう。
+Gather には、集めない変数（つまりID変数）を特定する、`-` シンボルを使う
+別の書き方もあります。
 
 ![](../fig/14-tidyr-fig4.png)
 
@@ -243,14 +237,14 @@ str(gap_long)
 ~~~
 {: .output}
 
-That may seem trivial with this particular dataframe, but sometimes you have 1
-ID variable and 40 Observation variables with irregular variables names. The
-flexibility is a huge time saver!
+これは、このデータフレームでは、取るに足らないことかもしれませんが、
+１つの ID 変数と40の変則的な変数名を持つ観測変数がある場合も時にはあります。
+柔軟性があることで、かなり時間が節約できるのです！
 
 
-Now `obstype_year` actually contains 2 pieces of information, the observation
-type (`pop`,`lifeExp`, or `gdpPercap`) and the `year`. We can use the
-`separate()` function to split the character strings into multiple variables
+ここで `obstype_year` には、実は2種類の情報が含まれています。
+観測値の形（`pop`、`lifeExp`、又は`gdpPercap`）及び `year` です。 
+文字列を複数の変数に分割するには、 `separate()` 関数が使えます。
 
 
 ~~~
@@ -262,10 +256,10 @@ gap_long$year <- as.integer(gap_long$year)
 
 > ## チャレンジ２
 >
-> Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent.
->**Hint:** use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson
+> `gap_long` を使って、各大陸の平均余命、人口及びgdpPercapを計算しましょう。
+>**ヒント：** `dplyr` で習った `group_by()` と `summarize()` 関数を使いましょう。
 >
-> > ## Solution to Challenge 2
+> > ## チャレンジ２の解答
 > >
 > >~~~
 > >gap_long %>% group_by(continent,obs_type) %>%
@@ -300,12 +294,11 @@ gap_long$year <- as.integer(gap_long$year)
 > {: .solution}
 {: .challenge}
 
-## From long to intermediate format with spread()
+## spread() で縦長から中間形式へ
 
-It is always good to check work. So, let's use the opposite of `gather()` to
-spread our observation variables back out with the aptly named `spread()`. We
-can then spread our `gap_long()` to the original intermediate format or the
-widest format. Let's start with the intermediate format.
+仕事を確認することは、とても良いことです。 `gather()` の反対の名は体を表す `spread()` を使って、
+観測変数を元通りに広げてみましょう。そこから `gap_long()` を、元々の中間形式、又は、
+一番横長な形式に広げることもできます。まずは、中間形式から始めましょう。
 
 
 ~~~
@@ -363,9 +356,8 @@ names(gapminder)
 ~~~
 {: .output}
 
-Now we've got an intermediate dataframe `gap_normal` with the same dimensions as
-the original `gapminder`, but the order of the variables is different. Let's fix
-that before checking if they are `all.equal()`.
+元々の `gapminder` と同じ次元を持つ、中間形式のデータフレーム `gap_normal` ができましたが、
+変数の順番が違います。 このふたつが、 `all.equal()` かを調べる前に、これを直しましょう。
 
 
 ~~~
@@ -425,8 +417,7 @@ head(gapminder)
 ~~~
 {: .output}
 
-We're almost there, the original was sorted by `country`, `continent`, then
-`year`.
+もうすぐです。元々のは、 `country` 、 `continent` 、そして `year` でソートされていました。
 
 
 ~~~
@@ -442,15 +433,14 @@ all.equal(gap_normal,gapminder)
 ~~~
 {: .output}
 
-That's great! We've gone from the longest format back to the intermediate and we
-didn't introduce any errors in our code.
+すばらしい！一番縦に長い形式から、中間形式に戻し、コードにエラーが
+でることもありませんでした。
 
-Now lets convert the long all the way back to the wide. In the wide format, we
-will keep country and continent as ID variables and spread the observations
-across the 3 metrics (`pop`,`lifeExp`,`gdpPercap`) and time (`year`). First we
-need to create appropriate labels for all our new variables (time*metric
-combinations) and we also need to unify our ID variables to simplify the process
-of defining `gap_wide`
+さぁ、縦長のものを、全て横長に戻しましょう。横長の形式で、
+国と大陸を、ID変数として置いておいて、３行列（`pop`、`lifeExp`、`gdpPercap`）
+及び時間（`year`）に観測値を分けていきましょう。まず、全ての変数（time*metric の組み合わせ）
+に適当なラベルを付ける必要があります。また、`gap_wide` を定義する処理を簡単にするために、
+ID変数たちを統合する必要もあります。
 
 
 ~~~
@@ -490,9 +480,8 @@ str(gap_temp)
 ~~~
 {: .output}
 
-Using `unite()` we now have a single ID variable which is a combination of
-`continent`,`country`,and we have defined variable names. We're now ready to
-pipe in `spread()`
+`unite()` を使い、`continent`と`country`を組み合わせ、ID 変数をひとつ作り、
+変数名を定義しました。 `spread()` でパイプを使う準備が整いました。
 
 
 ~~~
@@ -550,10 +539,10 @@ str(gap_wide_new)
 
 > ## チャレンジ３
 >
-> Take this 1 step further and create a `gap_ludicrously_wide` format data by spreading over countries, year and the 3 metrics?
->**Hint** this new dataframe should only have 5 rows.
+> この一つ先に進み、 `gap_ludicrously_wide` を作り、国、年及び３つの行列に展開したデータを作りましょう。
+>**ヒント** この新しいデータフレームには、５行しかありません。
 >
-> > ## Solution to Challenge 3
+> > ## チャレンジ３の解答
 > >
 > >~~~
 > >gap_ludicrously_wide <- gap_long %>%
@@ -564,8 +553,8 @@ str(gap_wide_new)
 > {: .solution}
 {: .challenge}
 
-Now we have a great 'wide' format dataframe, but the `ID_var` could be more
-usable, let's separate it into 2 variables with `separate()`
+今、とても '横長な' 形式のデータフレームがありますが、 `ID_var` は、より使えるようにできるはずです。
+`separate()` を使って、２変数に分けてみましょう。
 
 
 
@@ -639,10 +628,10 @@ all.equal(gap_wide, gap_wide_betterID)
 ~~~
 {: .output}
 
-There and back again!
+そこにまた戻りました！
 
 
-## Other great resources
+## その他役に立つ資料
 
 * [R for Data Science](http://r4ds.had.co.nz/index.html)
 * [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
