@@ -5,17 +5,17 @@ title: Dataframe Manipulation with dplyr
 teaching: 40
 exercises: 15
 questions:
-- "How can I manipulate dataframes without repeating myself?"
+- "同じ作業を繰り返すことなく、データフレームを操作するにはどうすればよいです?"
 objectives:
-- " To be able to use the six main dataframe manipulation 'verbs' with pipes in  `dplyr`."
-- " To understand how `group_by()` and `summarize()` can be combined to summarize datasets."
-- " Be able to analyze a subset of data using logical filtering."
+- "`dplyr` にある6つの操作をパイプを使用して出来るようになりましょう。."
+- "データセットを要約するために `group_by()` と `summarize()` 併用出来ることを理解しましょう。"
+- "論理フィルターを使用してデータのサブセットを分析出来るようになりましょう。"
 keypoints:
-- "Use the `dplyr` package to manipulate dataframes."
-- "Use `select()` to choose variables from a dataframe."
-- "Use `filter()` to choose data based on values."
-- "Use `group_by()` and `summarize()` to work with subsets of data."
-- "Use `mutate()` to create new variables."
+- "`dplyr` パッケージを使用してデータフレームの操作を行う。"
+- "データフレームから変数を選択する際は `select()` を使用する。"
+- "値を基にデータを選択する際は `filter()` を使用する。"
+- "部分化されたデータを操作する際は `group_by()` や `summarize()` を使用する。"
+- "新しい変数を作成する際は `mutate()` を使用する。"
 source: Rmd
 ---
 

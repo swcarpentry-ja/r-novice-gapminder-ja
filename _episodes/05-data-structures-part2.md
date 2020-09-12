@@ -5,23 +5,23 @@ title: "Exploring Data Frames"
 teaching: 20
 exercises: 10
 questions:
-- "How can I manipulate a data frame?"
+- "データフレームはどのように操作すればよいですか?"
 objectives:
-- "Add and remove rows or columns."
-- "Remove rows with `NA` values."
-- "Append two data frames."
-- "Understand what a `factor` is."
-- "Convert a `factor` to a `character` vector and vice versa."
-- "Display basic properties of data frames including size and class of the columns, names, and first few rows."
+- "行や列を追加したり削除出来るようになりましょう。"
+- "`NA`が入っている行の削除が出来るようになりましょう。"
+- "2つのデータフレームをマージできるようになりましょう。"
+- "`factor`（ファクター）について理解しましょう。"
+- "`factor` を `character`（文字型）に変換、またはその逆の変換が出来るようになりましょう。"
+- "データフレームの列のサイズやクラスなどの基本的なプロパティ、および名前や最初の数行の表示が出来るようになりましょう。"
 keypoints:
-- "Use `cbind()` to add a new column to a data frame."
-- "Use `rbind()` to add a new row to a data frame."
-- "Remove rows from a data frame."
-- "Use `na.omit()` to remove rows from a data frame with `NA` values."
-- "Use `levels()` and `as.character()` to explore and manipulate factors."
-- "Use `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame."
-- "Read in a csv file using `read.csv()`."
-- "Understand what `length()` of a data frame represents."
+- "新しい列をデータフレームに追加するときは `cbind()` を使用する。"
+- "新しい行をデータフレームに追加するときは `rbind()` を使用する。"
+- "データフレームから行を削除するとき"
+- "値が `NA` の行をデータフレームから削除するときは `na.omit()` を使用する。"
+- "ファクターの内容を確認、および操作するときは `levels()` および `as.character()` を使用する。"
+- "データフレームの構造を理解したいときは `str()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, および `typeof()` を使用する。"
+- "csv ファイルを読み込むときは `read.csv()`　を使用する。"
+- "データフレームの `length()` の出力内容を理解する。"
 source: Rmd
 ---
 
@@ -29,7 +29,7 @@ source: Rmd
 
 これでRの基礎を全て見たことになります。このレッスンで、Rの基本的なデータ型、データ構造を習いました。
 これからすることの全ては、これらの道具を用いた操作となります。
-しかし大抵の場合、主演はデータフレーム（CSVファイルから情報を読み込み作成した表）です。
+しかし大抵の場合、主役はデータフレーム（CSVファイルから情報を読み込み作成した表）です。
 このレッスンでは、データフレームを使ってどう作業していくかについて更に学んでいきましょう。
 
 ## データフレームに行と列を追加する
