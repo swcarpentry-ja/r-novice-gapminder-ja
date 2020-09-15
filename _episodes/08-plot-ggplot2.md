@@ -12,7 +12,7 @@ objectives:
 - "様々な色、形、線を用いた、プロットの審美面の操作が出来るようになりましょう。"
 - "スケール変換とグループ化による、より良いデータ視覚化が出来るようになりましょう。"
 - "ggplot で作成したプロットのディスク保存が出来るようになりましょう。"
-キーポイント：
+keypoints:
 - "プロットを作成するために`ggplot2`を用います"
 - "エステティック、ジオメトリ、統計、スケール変換、グループ化など、レイヤー単位でグラフィックスを考えてみましょう。"
 source: Rmd
@@ -30,7 +30,7 @@ Rには、主に3つのプロットシステムがあります。
 [lattice]: http://www.statmethods.net/advgraphs/trellis.html
 [ggplot2]: http://www.statmethods.net/advgraphs/ggplot2.html
 
-今回、私たちはggplt2パッケージについて学んでいきます。
+今回、私たちはggplot2パッケージについて学んでいきます。
 なぜなら、ggplot2パッケージは出版品質並のグラフィック作成に最も効果的だからです。
 
 ggplot2はthe grammar of graphics(グラフィックス文法)に基づいており、
