@@ -21,8 +21,8 @@ or run `make` in this directory for a list of helpful commands.
 理解してもらうこと、解析をモジュラーユニットに分割することやタスクの自動化、
 およびカプセル化など、科学的コンピューティングのベストプラクティスを教えることに主眼をおいています。
 
-Note that this workshop focuses on the fundamentals of the programming
-language R, and not on statistical analysis.
+このワークショップは、プログラミング言語 R の基礎を教えることが目的であり、
+統計分析を教えることは含まれていないことに注意してください。
 
 レッスンには、1日に教えることができる以上の素材が含まれています。
 [講師ノートのページ]({{ page.root }}/guide)には、
@@ -34,10 +34,11 @@ language R, and not on statistical analysis.
 
 Maintainers:
 
-* [Full Name][GitHubUser]
-* [Full Name][GitHubUser]
-* [Full Name][GitHubUser]
-* [Naupaka Zimmerman][zimmerman_naupaka]
+* [Tom Kelly][TomKellyGenetics]
+* [Joel Nitta][joelnitta]
+* [Riku Takei][rikutakei]
+ [Masami Yamaguchi][masamiy]
+ [Maki Arakaki][rkkmk]
 
 [gapminder]: http://www.gapminder.org/
 [lesson-example]: https://carpentries.github.io/lesson-example
