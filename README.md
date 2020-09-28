@@ -37,8 +37,8 @@ Maintainers:
 * [Tom Kelly][TomKellyGenetics]
 * [Joel Nitta][joelnitta]
 * [Riku Takei][rikutakei]
- [Masami Yamaguchi][masamiy]
- [Maki Arakaki][rkkmk]
+* [Masami Yamaguchi][masamiy]
+* [Maki Arakaki][rkkmk]
 
 [gapminder]: http://www.gapminder.org/
 [lesson-example]: https://carpentries.github.io/lesson-example
