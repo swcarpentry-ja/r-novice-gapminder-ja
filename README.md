@@ -10,8 +10,8 @@
 
 この資料のレンダリング版については、<https://swcarpentry.github.io/r-novice-gapminder>を参照してください。.
 [レッスンテンプレートのドキュメント][lesson-example]
-for instructions on formatting, building, and submitting material,
-or run `make` in this directory for a list of helpful commands.
+資料のフォーマット、作成、追加するの手順については、
+このディレクトリでmakeを実行して、役立つコマンドのリストを確認してください。
 
 この講座の目的は、プログラミング初心者に R を使ったデータ解析のためのモジュール化されたコードの書き方と、
 そのベストプラクティスを教えることです。R は多くの科学分野の統計分析や
