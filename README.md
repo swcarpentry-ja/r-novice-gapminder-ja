@@ -10,20 +10,19 @@
 
 この資料のレンダリング版については、<https://swcarpentry.github.io/r-novice-gapminder>を参照してください。.
 [レッスンテンプレートのドキュメント][lesson-example]
-for instructions on formatting, building, and submitting material,
-or run `make` in this directory for a list of helpful commands.
+資料のフォーマット、作成、追加するの手順については、
+このディレクトリでmakeを実行して、役立つコマンドのリストを確認してください。
 
-The goal of this lesson is to teach novice programmers to write modular code
-and best practices for using R for data analysis. R is commonly used in many
-scientific disciplines for statistical analysis and its array of third-party
-packages. We find that many scientists who come to Software Carpentry workshops
-use R and want to learn more. The emphasis of these materials is to give
-attendees a strong foundation in the fundamentals of R, and to teach best
-practices for scientific computing: breaking down analyses into modular units,
-task automation, and encapsulation.
+この講座の目的は、プログラミング初心者に R を使ったデータ解析のためのモジュール化されたコードの書き方と、
+そのベストプラクティスを教えることです。R は多くの科学分野の統計分析や
+サードパーティーパッケージによる様々なデータ解析に使用されています。
+私たちは、ソフトウェアカーペントリーワークショップに参加した多くの科学者が、R を使用し、
+もっと学びたいと思っていると理解しています。この教材は、参加者に R の基本中の基本を
+理解してもらうこと、解析をモジュラーユニットに分割することやタスクの自動化、
+およびカプセル化など、科学的コンピューティングのベストプラクティスを教えることに主眼をおいています。
 
-Note that this workshop focuses on the fundamentals of the programming
-language R, and not on statistical analysis.
+このワークショップは、プログラミング言語 R の基礎を教えることが目的であり、
+統計分析を教えることは含まれていないことに注意してください。
 
 レッスンには、1日に教えることができる以上の素材が含まれています。
 [講師ノートのページ]({{ page.root }}/guide)には、
@@ -35,10 +34,11 @@ language R, and not on statistical analysis.
 
 Maintainers:
 
-* [Full Name][GitHubUser]
-* [Full Name][GitHubUser]
-* [Full Name][GitHubUser]
-* [Naupaka Zimmerman][zimmerman_naupaka]
+* [Tom Kelly][TomKellyGenetics]
+* [Joel Nitta][joelnitta]
+* [Riku Takei][rikutakei]
+* [Masami Yamaguchi][masamiy]
+* [Maki Arakaki][rkkmk]
 
 [gapminder]: http://www.gapminder.org/
 [lesson-example]: https://carpentries.github.io/lesson-example
