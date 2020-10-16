@@ -7,8 +7,8 @@ root: .
 
 ソフトウェアカーペントリーとData Carpentryに関する全ての教材は
 [クリエイティブ・コモンズ 表示ライセンス](https://creativecommons.org/licenses/by/4.0/deed.ja)
-の下で利用可能です。以下は、[表示4.0 国際(CC BY 4.0)ライセンスの完全な法的テキスト]
-(https://creativecommons.org/licenses/by/4.0/legalcode.ja)の
+の下で利用可能です。以下は、
+[表示4.0 国際(CC BY 4.0)ライセンスの完全な法的テキスト](https://creativecommons.org/licenses/by/4.0/legalcode.ja)の
 人が読んでわかりやすいようにした要約です。(ライセンスの代わりになるものではありません。）
 
 あなたは以下の条件に従う限り、自由に：
