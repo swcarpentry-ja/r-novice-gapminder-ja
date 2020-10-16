@@ -3,82 +3,82 @@ layout: page
 title: "Licenses"
 root: .
 ---
-## Instructional Material
+## 教材
 
-All Software Carpentry and Data Carpentry instructional material is
-made available under the [Creative Commons Attribution
-license][cc-by-human]. The following is a human-readable summary of
-(and not a substitute for) the [full legal text of the CC BY 4.0
-license][cc-by-legal].
+ソフトウェアカーペントリーとData Carpentryに関する全ての教材は
+[クリエイティブ・コモンズ 表示ライセンス](https://creativecommons.org/licenses/by/4.0/deed.ja)
+の下で利用可能です。以下は、[表示4.0 国際(CC BY 4.0)ライセンスの完全な法的テキスト]
+(https://creativecommons.org/licenses/by/4.0/legalcode.ja)の
+人が読んでわかりやすいようにした要約です。(ライセンスの代わりになるものではありません。）
 
-You are free:
+あなたは以下の条件に従う限り、自由に：
 
-* to **Share**---copy and redistribute the material in any medium or format
-* to **Adapt**---remix, transform, and build upon the material
+* **共有**---どのようなメディアやフォーマットでも資料を複製したり、再配布できます
+* **翻案**---マテリアルをリミックスしたり、改変したり、別の作品のベースにしたりできます
 
-for any purpose, even commercially.
 
-The licensor cannot revoke these freedoms as long as you follow the
-license terms.
+営利目的も含め、どのような目的でも。
 
-Under the following terms:
+あなたがライセンスの条件に従っている限り、許諾者がこれらの自由を
+取り消すことはできません。
 
-* **Attribution**---You must give appropriate credit (mentioning that
-  your work is derived from work that is Copyright © Software
-  Carpentry and, where practical, linking to
-  http://software-carpentry.org/), provide a [link to the
-  license][cc-by-human], and indicate if changes were made. You may do
-  so in any reasonable manner, but not in any way that suggests the
-  licensor endorses you or your use.
+あなたの従うべき条件は以下の通りです：
 
-**No additional restrictions**---You may not apply legal terms or
-technological measures that legally restrict others from doing
-anything the license permits.  With the understanding that:
+* **表示**---あなたは 適切なクレジットを表示し (あなたの作品が
+  ソフトウェアカーペントリーの著作物 (Software Carpentry©) から派生していることを記載して、
+  そして適切な場合は http://software-carpentry.org へのリンクを表示), 
+  [ライセンスへのリンク](https://creativecommons.org/licenses/by/4.0/deed.ja)を
+  提供し、変更があったらその旨を示さなければなりません。
+  これらは合理的であればどのような方法で行っても構いませんが、
+  許諾者があなたやあなたの利用行為を支持していると示唆するような方法は除きます。
 
-Notices:
+**追加的な制約は課せません **---あなたは、このライセンスが他の者に
+許諾することを法的に制限するようないかなる法的規定も技術的手段も
+適用してはなりません：
 
-* You do not have to comply with the license for elements of the
-  material in the public domain or where your use is permitted by an
-  applicable exception or limitation.
-* No warranties are given. The license may not give you all of the
-  permissions necessary for your intended use. For example, other
-  rights such as publicity, privacy, or moral rights may limit how you
-  use the material.
+ご注意：
 
-## Software
+* あなたは、資料の中でパブリック・ドメインに属している部分に関して、
+  あるいはあなたの利用が著作権法上の権利制限規定にもとづく場合には、
+  ライセンスの規定に従う必要はありません。.
+* 保証は提供されていません。ライセンスはあなたの利用に
+  必要な全ての許諾を与えないかも知れません。例えば、パブリシティ権、
+  肖像権、人格権 などの他の諸権利はあなたがどのように資料を利用するかを
+制限することがあります。
 
-Except where otherwise noted, the example programs and other software
-provided by Software Carpentry and Data Carpentry are made available under the
-[OSI][osi]-approved
-[MIT license][mit-license].
+## ソフトウェア
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+特に記載がある場合を除いて、ソフトウェアカーペントリーおよびデータカーペントリーが
+提供しているサンプルプログラムやソフトウェアは、
+[OSI][osi]が承認した
+[MIT ライセンス](https://ja.osdn.net/projects/opensource/wiki/licenses%2FMIT_license)の下で利用可能です。
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+以下に定める条件に従い、本ソフトウェアおよび関連文書のファイル
+（以下「ソフトウェア」）の複製を取得するすべての人に対し、ソフトウェアを
+無制限に扱うことを無償で許可します。これには、ソフトウェアの複製を使用、
+複写、変更、結合、掲載、頒布、サブライセンス、および/または販売する権利、
+およびソフトウェアを提供する相手に同じことを許可する権利も無制限に含まれます。
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+上記の著作権表示および本許諾表示を、ソフトウェアのすべての複製または
+重要な部分に記載するものとします。
 
-## Trademark
+ソフトウェアは「現状のまま」で、明示であるか暗黙であるかを問わず、
+何らの保証もなく提供されます。ここでいう保証とは、商品性、
+特定の目的への適合性、および権利非侵害についての保証も含みますが、
+それに限定されるものではありません。 作者または著作権者は、契約行為、
+不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、
+あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、
+損害、その他の義務について何らの責任も負わないものとします。
 
-"Software Carpentry" and "Data Carpentry" and their respective logos
-are registered trademarks of [Community Initiatives][CI].
+## 商標
+
+"Software Carpentry"と"Data Carpentry" およびそれぞれのロゴは
+[Community Initiatives][CI]における登録商標または商標です。
 
 [cc-by-human]: https://creativecommons.org/licenses/by/4.0/
 [cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
 [mit-license]: https://opensource.org/licenses/mit-license.html
 [ci]: http://communityin.org/
 [osi]: https://opensource.org
+[osg]: https://opensource.jp
 
