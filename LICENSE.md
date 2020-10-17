@@ -26,13 +26,13 @@ root: .
 
 * **表示**---あなたは 適切なクレジットを表示し (あなたの作品が
   ソフトウェアカーペントリーの著作物 (Software Carpentry©) から派生していることを記載して、
-  そして適切な場合は http://software-carpentry.org へのリンクを表示), 
+  そして適切な場合は[http://software-carpentry.org](http://software-carpentry.org)へのリンクを表示), 
   [ライセンスへのリンク](https://creativecommons.org/licenses/by/4.0/deed.ja)を
   提供し、変更があったらその旨を示さなければなりません。
   これらは合理的であればどのような方法で行っても構いませんが、
   許諾者があなたやあなたの利用行為を支持していると示唆するような方法は除きます。
 
-**追加的な制約は課せません **---あなたは、このライセンスが他の者に
+**追加的な制約は課せません**---あなたは、このライセンスが他の者に
 許諾することを法的に制限するようないかなる法的規定も技術的手段も
 適用してはなりません：
 
@@ -51,7 +51,7 @@ root: .
 特に記載がある場合を除いて、ソフトウェアカーペントリーおよびデータカーペントリーが
 提供しているサンプルプログラムやソフトウェアは、
 [OSI][osi]が承認した
-[MIT ライセンス](https://ja.osdn.net/projects/opensource/wiki/licenses%2FMIT_license)の下で利用可能です。
+[MITライセンス](https://ja.osdn.net/projects/opensource/wiki/licenses%2FMIT_license)の下で利用可能です。
 
 以下に定める条件に従い、本ソフトウェアおよび関連文書のファイル
 （以下「ソフトウェア」）の複製を取得するすべての人に対し、ソフトウェアを
@@ -72,8 +72,8 @@ root: .
 
 ## 商標
 
-"Software Carpentry"と"Data Carpentry" およびそれぞれのロゴは
-[Community Initiatives][CI]における登録商標または商標です。
+"Software Carpentry"と"Data Carpentry"およびそれぞれのロゴは[Community
+Initiatives][CI]における登録商標または商標です。
 
 [cc-by-human]: https://creativecommons.org/licenses/by/4.0/
 [cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
