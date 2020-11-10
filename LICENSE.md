@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Licenses"
+title: "ライセンス"
 root: .
 ---
 ## 教材
