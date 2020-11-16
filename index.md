@@ -1,6 +1,7 @@
 ---
 layout: lesson
-root: .
+root: /ja/
+permalink: /ja/index.html
 ---
 
 ブログラマーでない人のための gapminder データを用いた R 入門。
