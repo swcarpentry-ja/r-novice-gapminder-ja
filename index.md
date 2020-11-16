@@ -1,5 +1,6 @@
 ---
 layout: lesson
+title: "再現可能な科学的解析のためにR"
 root: /ja/
 permalink: /ja/index.html
 ---
