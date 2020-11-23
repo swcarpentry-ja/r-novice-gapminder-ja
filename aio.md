@@ -1,6 +1,6 @@
 ---
 layout: page 
-root: .
+root: /ja/
 ---
 <script>
   window.onload = function() {
