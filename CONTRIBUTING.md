@@ -1,152 +1,153 @@
-# Contributing
+# プロジェクトに貢献する
 
-[Software Carpentry][swc-site] and [Data Carpentry][dc-site] are open source projects,
-and we welcome contributions of all kinds:
-new lessons,
-fixes to existing material,
-bug reports,
-and reviews of proposed changes are all welcome.
+[SoftwareCarpentry][swc-site]と[DataCarpentry][dc-site]はオープンソースのプロジェクトです。
+コミュニティーからの資料提供・ご協力、例えば、
+新しいレッスン、
+既存の資料の修正、
+バグレポート、
+変更点のレビューなど、どんなに些細な変更も歓迎いたします。
 
-## Contributor Agreement
+## 貢献する方法
 
-By contributing,
-you agree that we may redistribute your work under [our license](LICENSE.md).
-In exchange,
-we will address your issues and/or assess your change proposal as promptly as we can,
-and help you become a member of our community.
-Everyone involved in [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-agrees to abide by our [code of conduct](CONDUCT.md).
+このプロジェクトに貢献することにより、
+自身が提供したコンテンツを[私達のライセンス](License.md)に基づき配布する事に同意するものとします。
+ご協力と引き換えに、
+私達はあなたが提供する変更点・問題点などを検討し、
+できるだけ早くコミュニティーの一員になれるよう尽力いたします。
+[Software Carpentry][swc-site]と[Data Carpentry][dc-site]の一員になられた際には、
+私達の[行動規範](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html)を遵守する事に同意していただきます。
 
-## How to Contribute
+## 貢献する方法
 
-The easiest way to get started is to file an issue
-to tell us about a spelling mistake,
-some awkward wording,
-or a factual error.
-This is a good way to introduce yourself
-and to meet some of our community members.
+一番簡単に貢献する方法は、
+誤字、言葉遣い、
+間違った内容などを
+issue(イシュー)で報告する事です。
+Issueを報告することによって、自分をコミュニティーに紹介し、
+また、コミュニティーのメンバーと出会う良い機会にもなります。
 
-1.  If you do not have a [GitHub][github] account,
-    you can [send us comments by email][contact].
-    However,
-    we will be able to respond more quickly if you use one of the other methods described below.
+1. [GitHub][github]アカウントをお持ちでない場合、
+    [メール][contact]にてご連絡して下さい。
+    ですが、
+    以下の方法であればメールよりも早急に対応できる場合がありますので、そちらをお勧め致します。
 
-2.  If you have a [GitHub][github] account,
-    or are willing to [create one][github-join],
-    but do not know how to use Git,
-    you can report problems or suggest improvements by [creating an issue][issues].
-    This allows us to assign the item to someone
-    and to respond to it in a threaded discussion.
+2. [GitHub][github]アカウントをすでにお持ちである方・
+    またはアカウントを[新たに作る][github-join]気がある方で、
+    あまりGitに詳しくない・使い慣れていない方は、
+    質問・提案などを[新しいイシュー][new-issue]として開いて下さい。
+    イシューを開くことによって、コミュニティーから誰かをそのイシューに割り当て、
+    スレッド化したディスカッションとして質問・提案に応答させていただくことができます。
 
-3.  If you are comfortable with Git,
-    and would like to add or change material,
-    you can submit a pull request (PR).
-    Instructions for doing this are [included below](#using-github).
+3. Gitを使い慣れている方で、
+    既存の資料を変更、または追加したい方は、
+    プルリクエスト(Pull Request)にて変更点を提出して下さい。
+    プルリクエストを使った提出方法は、[下記に記載されています](#using-github)。
 
-## Where to Contribute
+## どこへ貢献するか
 
-1.  If you wish to change this lesson,
-    please work in <https://github.com/swcarpentry/r-novice-gapminder>,
-    which can be viewed at <https://swcarpentry.github.io/r-novice-gapminder>.
+1.  このレッスンの内容を変更したい場合は、
+    <https://github.com/swcarpentry/r-novice-gapminder>から編集して下さい。
+    ウェブサイトはこちらから観覧いただけます：<https://swcarpentry.github.io/r-novice-gapminder>
 
-2.  If you wish to change the example lesson,
-    please work in <https://github.com/carpentries/lesson-example>,
-    which documents the format of our lessons
-    and can be viewed at <https://carpentries.github.io/lesson-example>.
+2.  模範レッスンの内容を変更したい場合は、
+    <https://github.com/carpentries/lesson-example>から編集して下さい。
+    このリポジトリは模範レッスンの内容を記載しており、
+    こちらから観覧できます：<https://carpentries.github.io/lesson-example>.
 
-3.  If you wish to change the template used for workshop websites,
-    please work in <https://github.com/carpentries/workshop-template>.
-    The home page of that repository explains how to set up workshop websites,
-    while the extra pages in <https://carpentries.github.io/workshop-template>
-    provide more background on our design choices.
+3.  ワークショップのウェブサイトに使われるテンプレートの内容を変更したい場合は、
+    <https://github.com/carpentries/workshop-template>から編集して下さい。
+    このリポジトリのホームページに、ワークショップに使うウェブサイトの設立方法が記載されており、
+    <https://carpentries.github.io/workshop-template>から
+    サイトの詳細なデザイン方針が観覧できます。
 
-4.  If you wish to change CSS style files, tools,
-    or HTML boilerplate for lessons or workshops stored in `_includes` or `_layouts`,
-    please work in <https://github.com/carpentries/styles>.
+4.  `_includes`、または`_layouts`に保存されている、レッスンやワークショップのためのCSSファイル、ツール、
+    HTML boilerplateなどを編集したい場合は、
+    <https://github.com/carpentries/styles>から編集して下さい。
 
-## What to Contribute
+## 貢献していただきたい個所
 
-There are many ways to contribute,
-from writing new exercises and improving existing ones
-to updating or filling in the documentation
-and submitting [bug reports][issues]
-about things that don't work, aren't clear, or are missing.
-If you are looking for ideas,
-please see [the list of issues for this repository][issues],
-or the issues for [Data Carpentry][dc-issues]
-and [Software Carpentry][swc-issues] projects.
+新しい例を書く、すでにある例の改善、
+ドキュメントのアップデート、
+不明瞭な点、欠点、「動作に不具合がある」といった
+[バグの報告][new-issue]など、
+様々な方法で貢献していただくことができます。
+どういったイシューを開いたら良いかわからない場合は、
+[このリポジトリのイシュー][issues]、
+[Data Carpentryのイシュー][dc-issues]、
+もしくは[Software Carpentryのイシュー][swc-issues]を見てみて下さい。
 
-Comments on issues and reviews of pull requests are just as welcome:
-we are smarter together than we are on our own.
-Reviews from novices and newcomers are particularly valuable:
-it's easy for people who have been using these lessons for a while
-to forget how impenetrable some of this material can be,
-so fresh eyes are always welcome.
+すでにあるイシューへのコメントや、プルリクエストのレビューなども歓迎いたします。
+皆さんで協力したほうが、良い結果につながります。
+また、新しく加入された方の意見やレビューなどは特に重要視しています。
+レッスンの資料を幾度となく見てきた方は特に見落としがちなのですが、
+私達が提供している資料・コンテンツは、初めて資料を見る方などには、理解するのに時間が掛かる場合があるので、
+通常とは違う視点からの意見は大変貴重なのです。
 
-## What *Not* to Contribute
+## 貢献していただきたくない個所
 
-Our lessons already contain more material than we can cover in a typical workshop,
-so we are usually *not* looking for more concepts or tools to add to them.
-As a rule,
-if you want to introduce a new idea,
-you must (a) estimate how long it will take to teach
-and (b) explain what you would take out to make room for it.
-The first encourages contributors to be honest about requirements;
-the second, to think hard about priorities.
+現在、通常のワークショップの時間内ではカバーしきれないほどの内容量がレッスンの資料に含まれています。
+ですので、新たにレッスンに含められる項目やツールなどは求めておりません。
+どうしても新しい内容を入れたい場合は、
+(a)新しい内容を教えるために掛かるおおよその時間、
+(b)新しい内容を入れる代わりにどの内容を取り出すか、
+そして、取り出す理由をご説明下さい。
+最初の点は、貢献する方々に可能かどうかを見極めていただくためです。
+二つ目の点は、どちらの内容を有線するべきかを考えていただくためです。
 
-We are also not looking for exercises or other material that only run on one platform.
-Our workshops typically contain a mixture of Windows, Mac OS X, and Linux users;
-in order to be usable,
-our lessons must run equally well on all three.
+上記に加え、一つのプラットホーム・OSでしか使用ができないなどといったプログラムのレッスン内容・資料などは求めておりません。
+私達が提供するワークショップでは、Windows、Mac OS X、Linuxなど、違ったOSを使用するユーザーが来ることがあります。
+そのため、新しいレッスンを作る際には、
+先述の三つのOSに対応可能である必要があります。
 
-## Using GitHub
+## GitHubの使い方
 
-If you choose to contribute via GitHub,
-you may want to look at
-[How to Contribute to an Open Source Project on GitHub][how-contribute].
-In brief:
+GitHubから資料を提供したい場合は、
+[GitHubでオープンソース・プロジェクトに貢献する方法][how-contribute]
+を参照して下さい。
+簡潔にまとめると：
 
-1.  The published copy of the lesson is in the `gh-pages` branch of the repository
-    (so that GitHub will regenerate it automatically).
-    Please create all branches from that,
-    and merge the [master repository][repo]'s `gh-pages` branch into your `gh-pages` branch
-    before starting work.
-    Please do *not* work directly in your `gh-pages` branch,
-    since that will make it difficult for you to work on other contributions.
+1.  現在公開されているレッスン内容はリポジトリの`gh-pages`というブランチに保存されています
+    (これはGitHubが自動的に変更点を公開させるためです)。
+    そのため、全てのブランチは`gh-pages`から分岐させ、
+    オリジナルの[リポジトリ][repo]の`gh-pages`を自身が分岐した`gh-pages`のブランチにマージ・合流させてから、
+    内容を変更してください。
+    他の内容・個所へ貢献することが難しくなるため、
+    *オリジナルの`gh-pages`から直接内容を変更することはお控え下さい。*
 
-2.  We use [GitHub flow][github-flow] to manage changes:
-    1.  Create a new branch in your desktop copy of this repository for each significant change.
-    2.  Commit the change in that branch.
-    3.  Push that branch to your fork of this repository on GitHub.
-    4.  Submit a pull request from that branch to the [master repository][repo].
-    5.  If you receive feedback,
-        make changes on your desktop and push to your branch on GitHub:
-        the pull request will update automatically.
+2.  私達は[GitHub flow][github-flow]を使って変更点などを管理しています：
+    1.  自身が持っているオリジナルのリポジトリのコピー(フォーク)に新しいブランチを作り、そのブランチで内容を変更します。
+    2.  作ったブランチ内で変更点をコミットします。
+    3.  そのブランチをGitHubのフォークにプッシュします。
+    4.  自身のフォークからオリジナルの[リポジトリ][repo]へプルリクエストを提出します。
+    5.  頂いたコメントやレビューからの提案で、更に内容を変更する場合は、
+        自分のブランチで内容を変更し、GitHubのフォークにプッシュして下さい：
+        自動的にプルリクエストの内容がアップデートされます。
 
-Each lesson has two maintainers who review issues and pull requests
-or encourage others to do so.
-The maintainers are community volunteers,
-and have final say over what gets merged into the lesson.
+全てのレッスンには二人のメインテイナーがおり、彼・彼女らがイシューやプルリクエストを管理・見直す、
+もしくはその他のメンバーに、一緒に見直すように声をかけます。
+メインテイナー達はコミュニティーのボランティアですので、
+最終的に何を変更するかの決定権は、メインテイナーに委ねられています。
 
-## Other Resources
+## その他の資料
 
-General discussion of [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-happens on the [discussion mailing list][discuss-list],
-which everyone is welcome to join.
-You can also [reach us by email][contact].
+[Software Carpentry][swc-site]と[Data Carpentry][dc-site]についての一般的なディスカッションは、
+[ディスカッション用のメーリングリスト][discuss-list]で行われ、
+どなたでも参加できます。
+また、[メール][contact]からでもご連絡いただけます。
 
-[contact]: mailto:admin@software-carpentry.org
+[contact]: mailto:team@carpentries.org
 [dc-issues]: https://github.com/issues?q=user%3Adatacarpentry
 [dc-lessons]: http://datacarpentry.org/lessons/
 [dc-site]: http://datacarpentry.org/
-[discuss-list]: http://lists.software-carpentry.org/listinfo/discuss
-[github]: http://github.com
+[discuss-list]: https://carpentries.topicbox.com/groups/discuss
+[github]: https://github.com
 [github-flow]: https://guides.github.com/introduction/flow/
 [github-join]: https://github.com/join
 [how-contribute]: https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github
-[issues]: https://github.com/swcarpentry/r-novice-gapminder/issues
-[repo]: https://github.com/swcarpentry/r-novice-gapminder
+[new-issue]: https://github.com/swcarpentry/r-novice-gapminder/issues/new
+[issues]: https://github.com/swcarpentry/r-novice-gapminder/issues/
+[repo]: https://github.com/swcarpentry/r-novice-gapminder/
 [swc-issues]: https://github.com/issues?q=user%3Aswcarpentry
-[swc-lessons]: http://software-carpentry.org/lessons/
-[swc-site]: http://software-carpentry.org/
+[swc-lessons]: https://software-carpentry.org/lessons/
+[swc-site]: https://software-carpentry.org/
 
