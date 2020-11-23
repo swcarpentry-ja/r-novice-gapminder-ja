@@ -1,6 +1,7 @@
 ---
 layout: page 
-root: .
+root: /ja/
+permalink: /ja/aio/
 ---
 <script>
   window.onload = function() {
