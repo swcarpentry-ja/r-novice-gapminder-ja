@@ -72,7 +72,7 @@ root: .
 
 ## 商標
 
-"Software Carpentry"と"Data Carpentry"およびそれぞれのロゴは[Community
+「Software Carpentry」と「Data Carpentry」およびそれぞれのロゴは[Community
 Initiatives][CI]における登録商標または商標です。
 
 [cc-by-human]: https://creativecommons.org/licenses/by/4.0/
