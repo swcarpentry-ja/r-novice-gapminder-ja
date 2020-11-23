@@ -1,8 +1,9 @@
 ---
 layout: page
 title: "ライセンス"
-root: .
----
+root: /ja/
+permalink: /ja/LICENSE/
+
 ## 教材
 
 ソフトウェアカーペントリーとData Carpentryに関する全ての教材は
