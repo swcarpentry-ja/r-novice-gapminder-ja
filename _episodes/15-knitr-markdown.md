@@ -66,7 +66,7 @@ Markdownは、ウェブページを作るための軽量なマークアップ言
 R Studioで、File &rarr; New File &rarr; R Markdown をクリックしましょう。
 すると、次のようなダイアログボックスが出ます：
 
-![](../fig/New_R_Markdown.png)
+![](../../fig/New_R_Markdown.png)
 
 デフォルト（HTML output）のままでよいので、タイトルを付けましょう。
 
