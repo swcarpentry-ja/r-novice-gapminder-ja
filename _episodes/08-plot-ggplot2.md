@@ -50,7 +50,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
 
 最初に行うことは`ggplot`関数を呼び出すことです。
 この関数は、新しいプロットを作成していることをRに知らせます。
@@ -74,7 +74,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp))
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
 
 `ggplot`にデータを視覚的に表現する方法を指示する必要があります。
 これは新しい**geom**レイヤを追加することで行います。
@@ -88,7 +88,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
 
 > ## チャレンジ１
 >
@@ -115,7 +115,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-08-ch1-sol-1.png" title="plot of chunk ch1-sol" alt="plot of chunk ch1-sol" style="display: block; margin: auto;" />
+> > <img src="../../fig/rmd-08-ch1-sol-1.png" title="plot of chunk ch1-sol" alt="plot of chunk ch1-sol" style="display: block; margin: auto;" />
 > >
 > {: .solution}
 {: .challenge}
@@ -144,7 +144,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-08-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
+> > <img src="../../fig/rmd-08-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
 > >
 > {: .solution}
 {: .challenge}
@@ -162,7 +162,7 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lifeExp-line-1.png" title="plot of chunk lifeExp-line" alt="plot of chunk lifeExp-line" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-lifeExp-line-1.png" title="plot of chunk lifeExp-line" alt="plot of chunk lifeExp-line" style="display: block; margin: auto;" />
 
 `geom_point`レイヤーを追加する代わりに、`geom_line`レイヤーを追加しました。
 *by**エステティックを追加し、各国ごとに線を描くよう`ggplot`に指示します。
@@ -177,7 +177,7 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lifeExp-line-point-1.png" title="plot of chunk lifeExp-line-point" alt="plot of chunk lifeExp-line-point" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-lifeExp-line-point-1.png" title="plot of chunk lifeExp-line-point" alt="plot of chunk lifeExp-line-point" style="display: block; margin: auto;" />
 
 各レイヤーは、前のレイヤーの上に描画されることに注意することが重要です。
 この例では、点は線の上に描画されています。これはデモです。
@@ -189,7 +189,7 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lifeExp-layer-example-1-1.png" title="plot of chunk lifeExp-layer-example-1" alt="plot of chunk lifeExp-layer-example-1" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-lifeExp-layer-example-1-1.png" title="plot of chunk lifeExp-layer-example-1" alt="plot of chunk lifeExp-layer-example-1" style="display: block; margin: auto;" />
 
 この例では、**color**エステティックマッピングが、`ggplot`のグローバルプロットオプションから`geom_line`レイヤーに移動されたため、
 点には色が適用されなくなりました。
@@ -218,7 +218,7 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-08-ch3-sol-1.png" title="plot of chunk ch3-sol" alt="plot of chunk ch3-sol" style="display: block; margin: auto;" />
+> > <img src="../../fig/rmd-08-ch3-sol-1.png" title="plot of chunk ch3-sol" alt="plot of chunk ch3-sol" style="display: block; margin: auto;" />
 > >
 > > The lines now get drawn over the points!
 > >
@@ -237,7 +237,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter3-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter3" alt="plot of chunk lifeExp-vs-gdpPercap-scatter3" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-lifeExp-vs-gdpPercap-scatter3-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter3" alt="plot of chunk lifeExp-vs-gdpPercap-scatter3" style="display: block; margin: auto;" />
 
 現在、1人当たりGDPのいくつかの強い外れ値により、点と点の関係性を見ることが難しくなっています。
 *scale*関数を用いて、x軸上の単位のスケールを変更することができます。
@@ -252,7 +252,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-axis-scale-1.png" title="plot of chunk axis-scale" alt="plot of chunk axis-scale" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-axis-scale-1.png" title="plot of chunk axis-scale" alt="plot of chunk axis-scale" style="display: block; margin: auto;" />
 
 gdpPercap列の値をプロットに描画する前に、`log10`関数による変換を適用したので、
 10の各倍数は変換されたスケールの1の増加に対応します。
@@ -276,7 +276,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lm-fit-1.png" title="plot of chunk lm-fit" alt="plot of chunk lm-fit" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-lm-fit-1.png" title="plot of chunk lm-fit" alt="plot of chunk lm-fit" style="display: block; margin: auto;" />
 
 `geom_smooth`レイヤーで**size**エステティック属性を設定することによって、
 線を太くすることができます。
@@ -288,7 +288,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-lm-fit2-1.png" title="plot of chunk lm-fit2" alt="plot of chunk lm-fit2" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-lm-fit2-1.png" title="plot of chunk lm-fit2" alt="plot of chunk lm-fit2" style="display: block; margin: auto;" />
 
 エステティック属性を指定する方法は2つあります。
 ここでは、**size**エステティック属性の設定を'geom_smooth'の引数として渡しています。
@@ -316,7 +316,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-08-ch4a-sol-1.png" title="plot of chunk ch4a-sol" alt="plot of chunk ch4a-sol" style="display: block; margin: auto;" />
+> > <img src="../../fig/rmd-08-ch4a-sol-1.png" title="plot of chunk ch4a-sol" alt="plot of chunk ch4a-sol" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -342,7 +342,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > >~~~
 > >{: .language-r}
 > >
-> ><img src="../fig/rmd-08-ch4b-sol-1.png" title="plot of chunk ch4b-sol" alt="plot of chunk ch4b-sol" style="display: block; margin: auto;" />
+> ><img src="../../fig/rmd-08-ch4b-sol-1.png" title="plot of chunk ch4b-sol" alt="plot of chunk ch4b-sol" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -372,7 +372,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-facet-1.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-facet-1.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" />
 
 `facet_wrap`レイヤーは引数として“formula”をとり、チルダ(~)で表記されます。
 これは、gapminderデータセットのcountry列にある各々の一意な値のパネルを描画するようRに指示します。
@@ -403,7 +403,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-08-theme-1.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
+<img src="../../fig/rmd-08-theme-1.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
 
 ## プロットのエクスポート
@@ -476,7 +476,7 @@ RStudioは、利用可能な様々なレイヤーについて、とても便利�
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-08-ch5-sol-1.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" />
+> > <img src="../../fig/rmd-08-ch5-sol-1.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 

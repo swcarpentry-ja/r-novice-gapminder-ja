@@ -72,11 +72,11 @@ Software CarpentryのR部分のワークショップへようこそ。
   * 環境／履歴（右上のタブ形式）
   * Files/Plots/Packages/Help/Viewer（右下のタブ形式）
 
-![RStudioレイアウト](../fig/01-rstudio.png)
+![RStudioレイアウト](../../fig/01-rstudio.png)
 
 Rスクリプトなどのファイルを開くと、左上にエディタパネルも開きます。
 
-![拡張子.Rのファイルを開いたときのRStudioレイアウト](../fig/01-rstudio-script.png)
+![拡張子.Rのファイルを開いたときのRStudioレイアウト](../../fig/01-rstudio-script.png)
 
 
 ## RStudioでの作業の流れ
