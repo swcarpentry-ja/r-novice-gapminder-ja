@@ -686,11 +686,11 @@ Rは、`names(x)[3] != "c"` が明らかに間違いであるときに、この�
 `!=` を使うとき、Rは左側の引数のそれぞれの要素を右側のそれぞれの要素と比較しようとします。
 違う長さのベクトルを比較しようとすると、何が起こるのでしょう？
 
-![Inequality testing](../../fig/06-rmd-inequality.1.png)
+![Inequality testing](../fig/06-rmd-inequality.1.png)
 
 もし、もう一つのベクトルよりも短いベクトルがあったとき、そのベクトルは*再利用されます*：
 
-![Inequality testing: results of recycling](../../fig/06-rmd-inequality.2.png)
+![Inequality testing: results of recycling](../fig/06-rmd-inequality.2.png)
 
 この場合、Rは `c("a", "c")` を `names(x)` に合わせるのに必要な分だけ**繰り返します**。つまり、`c("a","c","a","c","a")`となります。
 再利用された`"a"` は、 `names(x)` の３番目の要素と一致しないため、 `!=` の値は、`TRUE` なのです。

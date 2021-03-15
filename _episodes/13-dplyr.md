@@ -116,7 +116,7 @@ year_country_gdp <- select(gapminder,year,country,gdpPercap)
 ~~~
 {: .language-r}
 
-![](../../fig/13-dplyr-fig1.png)
+![](../fig/13-dplyr-fig1.png)
 
 もし `year_country_gdp` を開いたら、year、country 及び gdpPercap しかないでしょう。
 これまでは、 '普通の' 書き方を使いましたが、`dplyr` の強みは、複数の関数を
@@ -236,7 +236,7 @@ Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':\t1704 obs. of  6 variabl
 （少なくとも上記の例では）特定の `continent` の値が対応する列のみを含む `data.frame` 
 になります。
 
-![](../../fig/13-dplyr-fig2.png)
+![](../fig/13-dplyr-fig2.png)
 
 ## summarize() の使用
 
@@ -254,7 +254,7 @@ gdp_bycontinents <- gapminder %>%
 ~~~
 {: .language-r}
 
-![](../../fig/13-dplyr-fig3.png)
+![](../fig/13-dplyr-fig3.png)
 
 
 ~~~
@@ -520,7 +520,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
 ~~~
 {: .language-r}
 
-<img src="../../fig/rmd-13-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
 このコードは、正しいプロットを作りますが、他に使い道のない、変数（`starts.with`
 及び `az.countries`）も作ります。 `dplyr` 関数のチェーンで、 `%>%` を使って、
@@ -544,7 +544,7 @@ gapminder %>%
 ~~~
 {: .language-r}
 
-<img src="../../fig/rmd-13-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
 
  `dplyr` 関数を使うことで、物事が簡単になります。例えば、
 最初の２つの段階を組み合わせることができます：
@@ -561,7 +561,7 @@ gapminder %>%
 ~~~
 {: .language-r}
 
-<img src="../../fig/rmd-13-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
+<img src="../fig/rmd-13-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
 
 > ## 上級チャレンジ
 >
