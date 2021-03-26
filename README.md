@@ -8,7 +8,7 @@
 この資料のレンダリング版についてはhttps://swcarpentry.github.io/r-novice-gapminder、資料の書式設定、構築、提出に関する手順についてはレッスンテンプレートのマニュアルを参照してください。 役に立つコマンド。
 
 
-この資料のレンダリング版については、<https://swcarpentry.github.io/r-novice-gapminder>を参照してください。.
+この資料のレンダリング版については、<https://swcarpentry.github.io/r-novice-gapminder>を参照してください。
 [レッスンテンプレートのドキュメント][lesson-example]
 資料のフォーマット、作成、追加するの手順については、
 このディレクトリでmakeを実行して、役立つコマンドのリストを確認してください。

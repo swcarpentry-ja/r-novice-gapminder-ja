@@ -629,7 +629,7 @@ calcGDP <- function(dat, year=NULL, country=NULL) {
 > より複雑なプロジェクトを R で扱うようになると、このようにより正式な手法を使って
 > ドキュメントを整備したくなるでしょう。
 >
-> 正式な自動化されたテストを書くには [testthat][] パッケージを使います。.
+> 正式な自動化されたテストを書くには [testthat][] パッケージを使います。
 {: .callout}
 
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
