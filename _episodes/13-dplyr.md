@@ -520,7 +520,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
+<img src="../../../fig/rmd-13-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 
 このコードは、正しいプロットを作りますが、他に使い道のない、変数（`starts.with`
 及び `az.countries`）も作ります。 `dplyr` 関数のチェーンで、 `%>%` を使って、
@@ -544,7 +544,7 @@ gapminder %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
+<img src="../../../fig/rmd-13-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
 
  `dplyr` 関数を使うことで、物事が簡単になります。例えば、
 最初の２つの段階を組み合わせることができます：
@@ -561,7 +561,7 @@ gapminder %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-13-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
+<img src="../../../fig/rmd-13-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" />
 
 > ## 上級チャレンジ
 >

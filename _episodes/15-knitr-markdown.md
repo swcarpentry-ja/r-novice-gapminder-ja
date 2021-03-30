@@ -234,7 +234,7 @@ Rコードは実行され、入力と出力に置き換えられます。図が�
 Markdownと図の文書は、[pandoc](http://pandoc.org/) というツールで処理され、
 Markdownファイルは、図の埋め込まれたhtmlファイルに変換されます。
 
-<img src="../fig/rmd-15-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" style="display: block; margin: auto auto auto 0;" />
+<img src="../../../fig/rmd-15-rmd_to_html_fig-1.png" title="plot of chunk rmd_to_html_fig" alt="plot of chunk rmd_to_html_fig" style="display: block; margin: auto auto auto 0;" />
 
 
 
