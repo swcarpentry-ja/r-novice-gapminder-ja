@@ -1,14 +1,14 @@
 ---
 layout: page
-title: Setup
+title: セットアップ
 root: .
 ---
 
-This lesson assumes you have the R, RStudio software installed on your computer.
+このレッスンは、あなたのコンピューターにRとRStudioがインストールされていることを前提としています。
 
-R can be downloaded [here](https://cran.r-project.org/mirrors.html).
+Rは[ここ](https://cran.r-project.org/mirrors.html)からダウンロードできます。
 
-RStudio is an environment for developing using R.
-It can be downloaded [here](https://www.rstudio.com/products/rstudio/download/).
-You will need the Desktop version for your computer.
+RStudioは、Rを用いる開発のための環境です。
+RStudioは[ここ](https://www.rstudio.com/products/rstudio/download/)からダウンロードできます。
+あなたのコンピューターにはデスクトップバージョンが必要です。
 
